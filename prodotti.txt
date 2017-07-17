@@ -1,0 +1,20 @@
+
+Grifon più WG
+    min-max: 2.00-3.00 kg/ha
+    carenza: 20gg
+    note: Intervenire preventivamente. Nel caso di elevata pressione infettiva o condizioni atmosferiche particolarmente piovose, può essere utile innalzare la dose fino a 400 g/hl
+
+Tiolene
+    min-max: 1.00-1.50 l/ha
+    carenza: 5gg
+    note: Trattamenti preventivi o alla comparsa dei primi sintomi ripetendo i trattamenti in funzione della pressione della malattia
+
+Soleil 50 WG
+    min-max: 0.40-0.50 kg/ha
+    carenza: 10gg
+    note: Trattamenti ogni 10-12 gg, preferibilmente in miscela con altri antiperonosporici di copertura o a differente meccanismo d'azione.
+
+Basta
+    min-max: 3.00-3.75 l/ha
+    carenza: 14gg
+    note: 1-2 trattamenti/anno. Concentrazione consigliata 1,2%. Temperatura minima di applicazione > 5°C. Altezza massima infestanti: 25 cm. Lunghezza massima polloni:15 cm.
