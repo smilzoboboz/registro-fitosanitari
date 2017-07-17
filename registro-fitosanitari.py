@@ -326,7 +326,22 @@ def methodPrintDatabase (mode='corto'):
                 databaseProdotti[entry]['carenza'].rjust(6)
             ))
 
-
+def cliHandler (args):
+    helpArguments = ['help', 'aiuto']
+    if len(args) == 0:
+        print("HELP")
+    elif len(args) > 0:
+        if args[0].lower() in ['add', 'acquisto', 'aggiungi', 'aggiunta']:
+            if len(args) == 1 or args[1].lower() in helpArguments:
+                print("add HELP")
+            else:
+                methodAggiunta(' '.join(args[1:]), 'acquisto')
+        elif args[0].lower() in ['use', 'uso', 'utilizzo', 'consumo']:
+            if len(args) == 1 or args[1].lower() in helpArguments:
+                print("use HELP")
+            else:
+                methodAggiunta(' '.join(args[1:]), 'utilizzo')
+            
 
 methodReadDatabase()
 if sys.argv[1].lower() == 'acquisto':
