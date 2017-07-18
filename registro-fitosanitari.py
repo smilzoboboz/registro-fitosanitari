@@ -116,7 +116,6 @@ class register:
         # usage example:
         #   program acquisto 2017/07/15 Grifon Più 80 WG 10 kg
         #   program acquisto Grifon 10 Kg
-        methodReadDatabase()
         # check if the date was omitted, if that's the case, use today's date
         try:
             int(line[0:4])
@@ -195,7 +194,7 @@ class register:
                 if result.group(5):
                     pos = result.group(5).lower().split(',')
                 else:
-                    pos = ['prosecco', 'pinot']
+                    pos = defaultPos
             else:
                 pos = []
             if result.group(6):
@@ -241,97 +240,119 @@ class register:
         for product in list(databaseTemporaneo):
             print("%s%s%s %5.2f %s" % (
                 color.CYAN, product.ljust(15).capitalize(), color.END,
-                databaseTemporaneo[product]['qty'], databaseTemporaneo[product]['unit']
-            ))
-        
-
-def methodWriteDatabase (line, file='prodotti.txt'):
-    # usage example:
-    #   tiolene 200-300 ml/ha 20gg various uninteresting notes
-    #   grifon 0.4 0.5 kg 5
-    prog = re.compile('(.*) ([-.0-9]+) ([mMlLkKgG]+)[hl/]* ([0-9]+)[gG]* (.*)')
-    result = prog.match(line)
-    name = result.group(1)
-    min, max = result.group(2).split('-')
-    unit = result.group(3).lower()
-    carenza = int(result.group(4))
-    note = result.group(5)
-    cUnit, min = unitConversion(unit, min)
-    cUnit, max = unitConversion(unit, max)
-    similar = []
-    for prodotto in list(databaseProdotti):
-        if prodotto.count(name.lower()) == 1:
-            similar.append(prodotto)
-    if len(similar) > 0:
-        print("Sono stati trovati alcuni prodotti simili a quello proposto:")
-        for prodotto in similar:
-            print("  %s" % prodotto.capitalize())
-        answer = query_yes_no("\nSi è sicuri di continuare con l'aggiunta di un nuovo prodotto?", 'no')
-        if answer is False:
-            raise ProductException()
-    with open(file, 'a', encoding='utf-8') as fp:
-        fp.write("\n%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %dgg\n    note: %s\n" % (
-            name, min, max, cUnit, carenza, note))
-    print("Prodotto aggiunto correttamente:")
-    print("\n%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %dgg\n    note: %s%s%s" % (
-        name, min, max, cUnit, carenza, color.GRAY, alignText(note, 10), color.END))
-
-def methodReadDatabase (file='prodotti.txt'):
-    try:
-        with open(file, encoding='utf-8') as fp:
-            raw = fp.read().splitlines()
-    except FileNotFoundError:
-        raw = ''
-    for line in raw:
-        if len(line) > 1:
-            if line[0:4] != "    ":
-                name = line.lower()
-                databaseProdotti[name] = {}
-            elif line[0:4] == "    ":
-                key = line[4:].split(':')[0]
-                value = ':'.join(line[4:].split(':')[1:]).lstrip()
-                databaseProdotti[name][key] = value
-    for product in list(databaseProdotti):
-            databaseProdotti[product]['unit'] = databaseProdotti[product]['min-max'].split(' ')[1][:-3]
-            databaseProdotti[product]['minmax'] = databaseProdotti[product]['min-max'].split(' ')[0].split('-')
-            del databaseProdotti[product]['min-max']
-            databaseProdotti[product]['carenza'] = databaseProdotti[product]['carenza'][:-2]
-
-def methodPrintDatabase (mode='corto'):
-    if len(list(databaseProdotti)) == 0:
-        methodReadDatabase()
-    if mode == 'corto':
-        print("NOME%s  MIN-MAX   /ha  CARENZA" % (' '*16))
-    elif mode == 'completo':
-        print("")
-    for entry in list(databaseProdotti):
-        if mode == 'completo':
-            print("%s%s%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %sgg\n    note: %s%s%s" % (
-                color.CYAN, entry.upper(), color.END,
-                float(databaseProdotti[entry]['minmax'][0]), float(databaseProdotti[entry]['minmax'][1]),
-                databaseProdotti[entry]['unit'],
-                databaseProdotti[entry]['carenza'],
-                color.GRAY, alignText(databaseProdotti[entry]['note'], 10), color.END
-            ))
-        elif mode == 'corto':
-            print("%s%s%s%.2f-%.2f %s/ha %sgg" % (
-                color.CYAN, entry.capitalize().ljust(20), color.END, 
-                float(databaseProdotti[entry]['minmax'][0]), float(databaseProdotti[entry]['minmax'][1]),
-                databaseProdotti[entry]['unit'].rjust(2),
-                databaseProdotti[entry]['carenza'].rjust(6)
+                databaseTemporaneo[product]['qty'],
+                databaseTemporaneo[product]['unit']
             ))
 
 
+class database:
 
-methodReadDatabase()
-if sys.argv[1].lower() == 'acquisto':
-    register.add(' '.join(sys.argv[2:]), 'acquisto')
-elif sys.argv[1].lower() == 'utilizzo':
-    register.add(' '.join(sys.argv[2:]), 'utilizzo')
-elif sys.argv[1].lower() == 'prodotto':
-    methodWriteDatabase(' '.join(sys.argv[2:]))
-elif sys.argv[1].lower() == 'prodotti':
-    methodPrintDatabase(sys.argv[2])
-elif sys.argv[1].lower() in ['bal', 'reg']:
-    register.read(sys.argv[1])
+    def write (line, file='prodotti.txt'):
+        # usage example:
+        #   tiolene 200-300 ml/ha 20gg various uninteresting notes
+        #   grifon 0.4 0.5 kg 5
+        prog = re.compile('(.*) ([-.0-9]+) ([mMlLkKgG]+)[hl/]* ([0-9]+)[gG]* (.*)')
+        result = prog.match(line)
+        name = result.group(1)
+        min, max = result.group(2).split('-')
+        unit = result.group(3).lower()
+        carenza = int(result.group(4))
+        note = result.group(5)
+        cUnit, min = unitConversion(unit, min)
+        cUnit, max = unitConversion(unit, max)
+        similar = []
+        for prodotto in list(databaseProdotti):
+            if prodotto.count(name.lower()) == 1:
+                similar.append(prodotto)
+        if len(similar) > 0:
+            print("Sono stati trovati alcuni prodotti simili a quello proposto:")
+            for prodotto in similar:
+                print("  %s" % prodotto.capitalize())
+            answer = query_yes_no("\nSi è sicuri di continuare con l'aggiunta di un nuovo prodotto?", 'no')
+            if answer is False:
+                raise ProductException()
+        with open(file, 'a', encoding='utf-8') as fp:
+            fp.write("\n%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %dgg\n    note: %s\n" % (
+                name, min, max, cUnit, carenza, note))
+        print("Prodotto aggiunto correttamente:")
+        print("\n%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %dgg\n    note: %s%s%s" % (
+            name, min, max, cUnit, carenza, color.GRAY, alignText(note, 10), color.END))
+
+    def read (file='prodotti.txt'):
+        try:
+            with open(file, encoding='utf-8') as fp:
+                raw = fp.read().splitlines()
+        except FileNotFoundError:
+            raw = ''
+        for line in raw:
+            if len(line) > 1:
+                if line[0:4] != "    ":
+                    name = line.lower()
+                    databaseProdotti[name] = {}
+                elif line[0:4] == "    ":
+                    key = line[4:].split(':')[0]
+                    value = ':'.join(line[4:].split(':')[1:]).lstrip()
+                    databaseProdotti[name][key] = value
+        for product in list(databaseProdotti):
+                databaseProdotti[product]['unit'] = databaseProdotti[product]['min-max'].split(' ')[1][:-3]
+                databaseProdotti[product]['minmax'] = databaseProdotti[product]['min-max'].split(' ')[0].split('-')
+                del databaseProdotti[product]['min-max']
+                databaseProdotti[product]['carenza'] = databaseProdotti[product]['carenza'][:-2]
+
+    def show (mode='complete'):
+        #if len(list(databaseProdotti)) == 0:
+        if mode == 'short':
+            print("NOME%s  MIN-MAX   /ha  CARENZA" % (' '*16))
+        elif mode == 'complete':
+            print("")
+        for entry in list(databaseProdotti):
+            if mode == 'complete':
+                print("%s%s%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %sgg\n    note: %s%s%s" % (
+                    color.CYAN, entry.upper(), color.END,
+                    float(databaseProdotti[entry]['minmax'][0]), float(databaseProdotti[entry]['minmax'][1]),
+                    databaseProdotti[entry]['unit'],
+                    databaseProdotti[entry]['carenza'],
+                    color.GRAY, alignText(databaseProdotti[entry]['note'], 10), color.END
+                ))
+            elif mode == 'short':
+                print("%s%s%s%.2f-%.2f %s/ha %sgg" % (
+                    color.CYAN, entry.capitalize().ljust(20), color.END, 
+                    float(databaseProdotti[entry]['minmax'][0]), float(databaseProdotti[entry]['minmax'][1]),
+                    databaseProdotti[entry]['unit'].rjust(2),
+                    databaseProdotti[entry]['carenza'].rjust(6)
+                ))
+
+def cliHandler (args):
+    helpArguments = ['help', 'aiuto']
+    if len(args) <= 1:
+        print("HELP")
+    elif len(args) > 1:
+        if args[1].lower() in ['add', 'agg', 'acquisto', 'aggiungi', 'aggiunta']:
+            if len(args) == 2 or args[2].lower() in helpArguments:
+                print("add HELP")
+            else:
+                register.add(' '.join(args[2:]), 'acquisto')
+        elif args[1].lower() in ['use', 'uso', 'utilizzo', 'consumo']:
+            if len(args) == 2 or args[2].lower() in helpArguments:
+                print("use HELP")
+            else:
+                register.add(' '.join(args[2:]), 'utilizzo')
+        elif args[1].lower() in ['bilancio', 'bal', 'bil']:
+            register.read('bal')
+        elif args[1].lower() in ['reg', 'registro']:
+            register.read('reg')
+        elif args[1].lower() in ['prodotti']:
+            if len(args) == 3 and args[2].lower() in helpArguments:
+                print("bal HELP")
+            elif len(args) > 2:
+                if args[2] in ['corto', 'compatto']:
+                    database.show('short')
+                else:
+                    print("specific balances")
+            else:
+                database.show()
+                
+
+database.read()
+cliHandler(sys.argv)
 #TODO bal and reg
