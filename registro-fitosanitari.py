@@ -28,9 +28,15 @@ class ProductException(Exception):
     pass
 
 def alignText (text, offset):
+    """ Text alignment up to 80 columns for longer notes
+    
+    "offset" equals to leading characters to fill as blank (except for the
+    very first line) to keep the text left aligned.
+    """
     columns, rows = shutil.get_terminal_size()
     textVar = ''
     max = int(columns) - int(offset)
+    # Arbitrary max lenght setting to 80
     if max > 80:
         max = 80
     while len(text) > max:
@@ -82,12 +88,6 @@ def query_yes_no(question, default="si"):
 def getKey(item):
     return item[1]
 
-
-databaseProdotti = {}
-databaseCorrente = ""  # Future ledger-like dat file
-defaultPos = ['prosecco', 'pinot']
-lineaRegistro = re.compile('([0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]) (.*) (-*[.0-9]+)[ ]*([mMkK]*[lLgG])[ ]*[-<]*([^ ]*)[ ]*[#]*[ ]*(.*)')
-
 def unitConversion (unit, qty):
     # target units are liters and kilograms
     # liquids section
@@ -105,149 +105,144 @@ def unitConversion (unit, qty):
         return ('kg', float(qty) * multiplier)
     raise ValueError
 
-def prodotto (name, unit, min, max, carenza, comp=[], notes=''):
-    # check for duplicate entries
-    for item in list(databaseProdotti):
-        if item == name.lower():
-            answer = query_yes_no("Prodotto già inserito nel database, sostituire i valori esistenti con quelli proposti?", 'no')
-            if answer is False:
-                raise ProductException("Prodotto duplicato, ignorato.")
-    # check for valid input values
-    if not str(unit).lower() in ['g', 'kg', 'l', 'ml']:
-        raise ProductException("Errore nelle unità di misura.")
-    if not type(min) in [float, int] and type(max) in [float, int]:
-        raise ProductException("Valore per hl non numerico.")
-    cUnit, min = unitConversion(unit, min)
-    cUnit, max = unitConversion(unit, max)
-    if not type(carenza) == int:
-        raise ProductException("Carenza non espressa con un numero intero.")
-    # database entry compilation
-    databaseProdotti[name.lower()] = {
-        'unit': cUnit,
-        'minmax': [min, max],
-        'carenza': carenza,
-        'comp': comp,
-        'notes': notes
-        }
 
-def acquisto (date, name, unit, qty):
-    if not name.lower() in list(databaseProdotti):
-        raise ProductException("Il prodotto \"%s\" non esiste attualmente nel database, prima di procedere aggiungerlo." % name)
-    cUnit, qty = unitConversion(unit, qty)
-    global databaseCorrente
-    databaseCorrente += "%s %s %.2f %s\n" % (date, name.capitalize(), qty, cUnit)
+databaseProdotti = {}
+defaultPos = ['prosecco', 'pinot']  # product usage areas; default = all areas
+lineaRegistro = re.compile('([0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]) (.*) (-*[.0-9]+)[ ]*([mMkK]*[lLgG])[ ]*[-<]*([^ ]*)[ ]*[#]*[ ]*(.*)')
 
-def methodAggiunta (line, metodo):
-    # usage example:
-    #   program acquisto 2017/07/15 Grifon Più 80 WG 10 kg
-    #   program acquisto Grifon 10 Kg
-    methodReadDatabase()
-    try: int(line[0:4])
-    except ValueError: line = datetime.date.today().strftime('%Y/%m/%d ') + line
-    prog = lineaRegistro
-    result = prog.match(line)
-    date = result.group(1)
-    name = result.group(2).lower()
-    unit, qty = unitConversion(result.group(4).lower(), result.group(3))
-    if metodo == 'utilizzo':
-        #TODO: Check min/max usage scenarios and warn if overdue
-        qty = qty * (-1)
-    pos = ''
-    if qty < 0:
-        if result.group(5):
-            pos = " <-%s" % result.group(5)
-    note = ''
-    if result.group(6):
-        note = ' # %s' % result.group(6)
-    if not name.lower() in list(databaseProdotti):
-        print("\nIl prodotto indicato (%s) non è presente nel database." % (name.capitalize()))
-        similar = []
-        counter = 1
-        for product in list(databaseProdotti):
-            if product.count(name) == 1:
-                similar.append(product)
-        if len(similar) > 0:
-            print("Il programma ha trovato in database i seguenti prodotti simili a quello indicato:")
-            for item in similar:
-                print("    %d. %s" % (counter, item.capitalize()))
-                counter += 1
-            sys.stdout.write("Inserire il numero corrispondente al prodotto per utilizzarlo al posto di quello indicato (0 per annullare): ")
-            answer = input()
-            if int(answer) == 0:
-                raise ProductException("L'utente ha annullato l'inserimento.")
-            name = similar[int(answer) - 1]
-        else:
-            print("Completare il database col prodotto mancante prima di continuare con l'inserimento dei dati.")
-            raise ProductException()
-    #TODO: Check unit on products database for conformity (liquid/solid)
-    with open('registro.txt', 'a', encoding='utf-8') as fp:
-        fp.write("%s %s %.2f %s%s%s\n" % (date, name, qty, unit, pos, note))
-    print("\n%s %s %.2f %s%s%s" % (date, name.capitalize(), qty, unit, pos, note)) 
+class register:
 
-def methodReadLog (mode='reg', file='registro.txt'):
-    databaseTemporaneo = {}
-    registroTemporaneo = {}
-    counter = 0
-    with open(file, encoding='utf-8') as fp:
-        raw = fp.read().splitlines()
-    for line in raw:
+    def add (line, metodo):
+        # usage example:
+        #   program acquisto 2017/07/15 Grifon Più 80 WG 10 kg
+        #   program acquisto Grifon 10 Kg
+        methodReadDatabase()
+        # check if the date was omitted, if that's the case, use today's date
+        try:
+            int(line[0:4])
+        except ValueError:
+            line = datetime.date.today().strftime('%Y/%m/%d ') + line
+        # match the string and find key values
         prog = lineaRegistro
         result = prog.match(line)
         date = result.group(1)
         name = result.group(2).lower()
         unit, qty = unitConversion(result.group(4).lower(), result.group(3))
+        if metodo == 'utilizzo' and qty > 0:
+            #TODO: Check min/max usage scenarios and warn if overdue
+            qty = qty * (-1)
+        # product usage position and notes
+        pos = ''
         if qty < 0:
             if result.group(5):
-                pos = result.group(5).lower().split(',')
-            else:
-                pos = ['prosecco', 'pinot']
-        else:
-            pos = []
+                pos = " <-%s" % result.group(5)
+        note = ''
         if result.group(6):
-            note = '# %s' % result.group(6)
-        else:
-            note = ''
-        registroTemporaneo[counter] = {
-            'date': date,
-            'name': name.lower(),
-            'qty': qty,
-            'unit': unit,
-            'pos': pos,
-            'note': note}
-        counter += 1
-    awfulList = [[x, registroTemporaneo[x]['date']] for x in list(registroTemporaneo)]
-    #TODO Add reverse sorting
-    awfulList.sort(key=getKey)
-    for index in [ x[0] for x in awfulList]:
-        name = registroTemporaneo[index]['name']
-        date = registroTemporaneo[index]['date']
-        qty = registroTemporaneo[index]['qty']
-        unit = registroTemporaneo[index]['unit']
-        pos = registroTemporaneo[index]['pos']
-        note = registroTemporaneo[index]['note']
-        if name not in list(databaseTemporaneo):
-            databaseTemporaneo[name] = {'qty': qty, 'unit': unit}
-        else:
-            databaseTemporaneo[name]['qty'] += qty
-        if mode == 'reg':
-            if qty < 0:
-                colorModA = color.RED
+            note = ' # %s' % result.group(6)
+        # product name check upon the database
+        if not name.lower() in list(databaseProdotti):
+            print(
+                "\nIl prodotto indicato (%s) non è presente nel database." % (
+                name.capitalize()))
+            similar = []
+            counter = 1
+            for product in list(databaseProdotti):
+                if product.count(name) == 1:
+                    similar.append(product)
+            if len(similar) > 0:
+                print(
+                    "Il programma ha trovato in database i seguenti prodotti "
+                    "simili a quello indicato:")
+                for item in similar:
+                    print("    %d. %s" % (counter, item.capitalize()))
+                    counter += 1
+                sys.stdout.write(
+                    "Inserire il numero corrispondente al prodotto per "
+                    "utilizzarlo al posto di quello indicato (0 per "
+                    "annullare): ")
+                answer = input()
+                if int(answer) == 0:
+                    raise ProductException("L'utente ha annullato l'inserimento.")
+                name = similar[int(answer) - 1]
             else:
-                colorModA = ''
-            print("%s %s%s%s %s%6.2f%s %s | %5.2f %s  %s%s%s" % (
-                date,
-                color.CYAN, name.capitalize().rjust(15), color.END,
-                colorModA, qty, color.END, unit.ljust(2),
-                float(databaseTemporaneo[name]['qty']), unit.ljust(2),
-                color.GRAY, note, color.END
+                print(
+                    "Completare il database col prodotto mancante prima di "
+                    "continuare con l'inserimento dei dati.")
+                raise ProductException()
+        #TODO: Check unit on products database for conformity (liquid/solid)
+        # write to file and show the result
+        with open('registro.txt', 'a', encoding='utf-8') as fp:
+            fp.write(
+                "%s %s %.2f %s%s%s\n" % (
+                date, name, qty, unit, pos, note))
+        print(
+            "\n%s %s %.2f %s%s%s" % (
+            date, name.capitalize(), qty, unit, pos, note)) 
+
+    def read (mode='reg', file='registro.txt'):
+        databaseTemporaneo = {}
+        registroTemporaneo = {}
+        counter = 0
+        with open(file, encoding='utf-8') as fp:
+            raw = fp.read().splitlines()
+        for line in raw:
+            prog = lineaRegistro
+            result = prog.match(line)
+            date = result.group(1)
+            name = result.group(2).lower()
+            unit, qty = unitConversion(result.group(4).lower(), result.group(3))
+            if qty < 0:
+                if result.group(5):
+                    pos = result.group(5).lower().split(',')
+                else:
+                    pos = ['prosecco', 'pinot']
+            else:
+                pos = []
+            if result.group(6):
+                note = '# %s' % result.group(6)
+            else:
+                note = ''
+            registroTemporaneo[counter] = {
+                'date': date,
+                'name': name.lower(),
+                'qty': qty,
+                'unit': unit,
+                'pos': pos,
+                'note': note}
+            counter += 1
+        awfulList = [[x, registroTemporaneo[x]['date']] for x in list(registroTemporaneo)]
+        #TODO Add reverse sorting
+        awfulList.sort(key=getKey)
+        for index in [ x[0] for x in awfulList]:
+            name = registroTemporaneo[index]['name']
+            date = registroTemporaneo[index]['date']
+            qty = registroTemporaneo[index]['qty']
+            unit = registroTemporaneo[index]['unit']
+            pos = registroTemporaneo[index]['pos']
+            note = registroTemporaneo[index]['note']
+            if name not in list(databaseTemporaneo):
+                databaseTemporaneo[name] = {'qty': qty, 'unit': unit}
+            else:
+                databaseTemporaneo[name]['qty'] += qty
+            if mode == 'reg':
+                if qty < 0:
+                    colorModA = color.RED
+                else:
+                    colorModA = ''
+                print("%s %s%s%s %s%6.2f%s %s | %5.2f %s  %s%s%s" % (
+                    date,
+                    color.CYAN, name.capitalize().rjust(15), color.END,
+                    colorModA, qty, color.END, unit.ljust(2),
+                    float(databaseTemporaneo[name]['qty']), unit.ljust(2),
+                    color.GRAY, note, color.END
+                ))
+        if mode == 'reg':
+            print('-'*10)
+        for product in list(databaseTemporaneo):
+            print("%s%s%s %5.2f %s" % (
+                color.CYAN, product.ljust(15).capitalize(), color.END,
+                databaseTemporaneo[product]['qty'], databaseTemporaneo[product]['unit']
             ))
-    if mode == 'reg':
-        print('-'*10)
-    for product in list(databaseTemporaneo):
-        print("%s%s%s %5.2f %s" % (
-            color.CYAN, product.ljust(15).capitalize(), color.END,
-            databaseTemporaneo[product]['qty'], databaseTemporaneo[product]['unit']
-        ))
         
 
 def methodWriteDatabase (line, file='prodotti.txt'):
@@ -326,32 +321,17 @@ def methodPrintDatabase (mode='corto'):
                 databaseProdotti[entry]['carenza'].rjust(6)
             ))
 
-def cliHandler (args):
-    helpArguments = ['help', 'aiuto']
-    if len(args) == 0:
-        print("HELP")
-    elif len(args) > 0:
-        if args[0].lower() in ['add', 'acquisto', 'aggiungi', 'aggiunta']:
-            if len(args) == 1 or args[1].lower() in helpArguments:
-                print("add HELP")
-            else:
-                methodAggiunta(' '.join(args[1:]), 'acquisto')
-        elif args[0].lower() in ['use', 'uso', 'utilizzo', 'consumo']:
-            if len(args) == 1 or args[1].lower() in helpArguments:
-                print("use HELP")
-            else:
-                methodAggiunta(' '.join(args[1:]), 'utilizzo')
-            
+
 
 methodReadDatabase()
 if sys.argv[1].lower() == 'acquisto':
-    methodAggiunta(' '.join(sys.argv[2:]), 'acquisto')
+    register.add(' '.join(sys.argv[2:]), 'acquisto')
 elif sys.argv[1].lower() == 'utilizzo':
-    methodAggiunta(' '.join(sys.argv[2:]), 'utilizzo')
+    register.add(' '.join(sys.argv[2:]), 'utilizzo')
 elif sys.argv[1].lower() == 'prodotto':
     methodWriteDatabase(' '.join(sys.argv[2:]))
 elif sys.argv[1].lower() == 'prodotti':
     methodPrintDatabase(sys.argv[2])
 elif sys.argv[1].lower() in ['bal', 'reg']:
-    methodReadLog(sys.argv[1])
+    register.read(sys.argv[1])
 #TODO bal and reg
