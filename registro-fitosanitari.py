@@ -39,6 +39,8 @@ def alignText (text, offset):
     # Arbitrary max lenght setting to 80
     if max > 80:
         max = 80
+    if len(text) < max:
+        return text
     while len(text) > max:
         counter = max-1
         while counter != 0:
@@ -107,8 +109,10 @@ def unitConversion (unit, qty):
 
 
 databaseProdotti = {}
-defaultPos = ['prosecco', 'pinot']  # product usage areas; default = all areas
+superfici = {'prosecco': 6.9540, 'pinot': 0.9946,}
+defaultPos = list(superfici)  # product usage areas; default = all areas
 lineaRegistro = re.compile('([0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]) (.*) (-*[.0-9]+)[ ]*([mMkK]*[lLgG])[ ]*[-<]*([^ ]*)[ ]*[#]*[ ]*(.*)')
+
 
 class register:
 
@@ -178,7 +182,7 @@ class register:
             "\n%s %s %.2f %s%s%s" % (
             date, name.capitalize(), qty, unit, pos, note)) 
 
-    def read (mode='reg', file='registro.txt'):
+    def read (mode='reg', search=None, file='registro.txt'):
         databaseTemporaneo = {}
         registroTemporaneo = {}
         counter = 0
@@ -212,6 +216,7 @@ class register:
         awfulList = [[x, registroTemporaneo[x]['date']] for x in list(registroTemporaneo)]
         #TODO Add reverse sorting
         awfulList.sort(key=getKey)
+        smartDate = ""
         for index in [ x[0] for x in awfulList]:
             name = registroTemporaneo[index]['name']
             date = registroTemporaneo[index]['date']
@@ -220,21 +225,54 @@ class register:
             pos = registroTemporaneo[index]['pos']
             note = registroTemporaneo[index]['note']
             if name not in list(databaseTemporaneo):
-                databaseTemporaneo[name] = {'qty': qty, 'unit': unit}
+                databaseTemporaneo[name] = {'qty': qty, 'unit': unit, 'num': 0}
             else:
                 databaseTemporaneo[name]['qty'] += qty
+            if date == smartDate:
+                smartDate = "          "
+            else:
+                smartDate = date
             if mode == 'reg':
                 if qty < 0:
                     colorModA = color.RED
                 else:
                     colorModA = ''
-                print("%s %s%s%s %s%6.2f%s %s | %5.2f %s  %s%s%s" % (
-                    date,
-                    color.CYAN, name.capitalize().rjust(15), color.END,
-                    colorModA, qty, color.END, unit.ljust(2),
-                    float(databaseTemporaneo[name]['qty']), unit.ljust(2),
-                    color.GRAY, note, color.END
-                ))
+                if not search:
+                    print("%s %s%s%s %s%6.2f%s %s | %5.2f %s  %s%s%s" % (
+                        smartDate,
+                        color.CYAN, name.capitalize().rjust(15), color.END,
+                        colorModA, qty, color.END, unit.ljust(2),
+                        float(databaseTemporaneo[name]['qty']), unit.ljust(2),
+                        color.GRAY, note, color.END
+                    ))
+                elif sum([[x.lower() for x in registroTemporaneo[index]['pos']].count(y) for y in search]):
+                    databaseTemporaneo[name]['num'] += 1
+                    qty = -qty
+                    if int(databaseProdotti[name]['num']):
+                        numMax = '/%s' % str(databaseProdotti[name]['num']).ljust(2)
+                    else:
+                        numMax = '   '
+                    area = sum([superfici[x.lower()] for x in search])
+                    if (
+                        (qty/area) > float(databaseProdotti[name]['minmax'][0]) or
+                        (qty/area) < float(databaseProdotti[name]['minmax'][1])):
+                        qtyHa = "%s%.2f%s %s/ha (%.2f-%.2f %s/ha)" % (
+                            color.RED, qty/area, color.END,
+                            databaseProdotti[name]['unit'],
+                            float(databaseProdotti[name]['minmax'][0]),
+                            float(databaseProdotti[name]['minmax'][1]),
+                            databaseProdotti[name]['unit'])
+                    else:
+                        qtyHa = "%.2f%s" % (
+                            qty/area, databaseProdotti[name]['unit'])
+                    print("%s %s%s%s %6.2f %s | %d%s %s" % (
+                        smartDate,
+                        color.CYAN, name.capitalize().rjust(15), color.END,
+                        qty, unit.ljust(2),
+                        databaseTemporaneo[name]['num'], numMax, qtyHa)
+                    )  # | trattamenti correnti/max
+            smartDate = date
+                    
         if mode == 'reg':
             print('-'*10)
         for product in list(databaseTemporaneo):
@@ -249,15 +287,18 @@ class database:
 
     def write (line, file='prodotti.txt'):
         # usage example:
-        #   tiolene 200-300 ml/ha 20gg various uninteresting notes
+        #   tiolene 200-300 ml/ha 20gg 0 peronospora various uninteresting notes
         #   grifon 0.4 0.5 kg 5
-        prog = re.compile('(.*) ([-.0-9]+) ([mMlLkKgG]+)[hl/]* ([0-9]+)[gG]* (.*)')
+        prog = re.compile('(.*) ([-.0-9]+) ([mMlLkKgG]+)[ha/]* ([0-9]+)[gG]* ([0-9]*) *([^#]*)#*(.*)')
         result = prog.match(line)
+        print(result.groups)
         name = result.group(1)
         min, max = result.group(2).split('-')
         unit = result.group(3).lower()
         carenza = int(result.group(4))
-        note = result.group(5)
+        num = int(result.group(5))
+        obj = result.group(6).rstrip(" ")
+        note = result.group(7)
         cUnit, min = unitConversion(unit, min)
         cUnit, max = unitConversion(unit, max)
         similar = []
@@ -272,11 +313,11 @@ class database:
             if answer is False:
                 raise ProductException()
         with open(file, 'a', encoding='utf-8') as fp:
-            fp.write("\n%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %dgg\n    note: %s\n" % (
-                name, min, max, cUnit, carenza, note))
+            fp.write("\n%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %dgg\n    num: %d\n    obiettivo: %s\n    note: %s\n" % (
+                name, min, max, cUnit, carenza, num, obj, note))
         print("Prodotto aggiunto correttamente:")
-        print("\n%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %dgg\n    note: %s%s%s" % (
-            name, min, max, cUnit, carenza, color.GRAY, alignText(note, 10), color.END))
+        print("\n%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %dgg\n    num: %d\n    obiettivo: %s\n    note: %s%s%s" % (
+            name, min, max, cUnit, carenza, num, obj, color.GRAY, alignText(note, 10), color.END))
 
     def read (file='prodotti.txt'):
         try:
@@ -302,24 +343,32 @@ class database:
     def show (mode='complete'):
         #if len(list(databaseProdotti)) == 0:
         if mode == 'short':
-            print("NOME%s  MIN-MAX   /ha  CARENZA" % (' '*16))
+            print("NOME%s  MIN-MAX   /ha  CARENZA  N" % (' '*16))
         elif mode == 'complete':
             print("")
         for entry in list(databaseProdotti):
             if mode == 'complete':
-                print("%s%s%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %sgg\n    note: %s%s%s" % (
+                if int(databaseProdotti[entry]['num']):
+                    num = "\n    trattamenti max: %s" % databaseProdotti[entry]['num']
+                else:
+                    num = ""
+                print("%s%s%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %sgg%s\n    note: %s%s%s" % (
                     color.CYAN, entry.upper(), color.END,
                     float(databaseProdotti[entry]['minmax'][0]), float(databaseProdotti[entry]['minmax'][1]),
                     databaseProdotti[entry]['unit'],
-                    databaseProdotti[entry]['carenza'],
+                    databaseProdotti[entry]['carenza'], num,
                     color.GRAY, alignText(databaseProdotti[entry]['note'], 10), color.END
                 ))
             elif mode == 'short':
-                print("%s%s%s%.2f-%.2f %s/ha %sgg" % (
+                if int(databaseProdotti[entry]['num']):
+                    num = " %s" % str(databaseProdotti[entry]['num']).rjust(2)
+                else:
+                    num = "  /"
+                print("%s%s%s%.2f-%.2f %s/ha %sgg%s" % (
                     color.CYAN, entry.capitalize().ljust(20), color.END, 
                     float(databaseProdotti[entry]['minmax'][0]), float(databaseProdotti[entry]['minmax'][1]),
                     databaseProdotti[entry]['unit'].rjust(2),
-                    databaseProdotti[entry]['carenza'].rjust(6)
+                    databaseProdotti[entry]['carenza'].rjust(6), num,
                 ))
 
 def cliHandler (args):
@@ -340,10 +389,13 @@ def cliHandler (args):
         elif args[1].lower() in ['bilancio', 'bal', 'bil']:
             register.read('bal')
         elif args[1].lower() in ['reg', 'registro']:
-            register.read('reg')
+            if len(args) > 2:
+                register.read('reg', args[2:])
+            else:
+                register.read('reg')
         elif args[1].lower() in ['prodotti']:
             if len(args) == 3 and args[2].lower() in helpArguments:
-                print("bal HELP")
+                print("prodotti HELP")
             elif len(args) > 2:
                 if args[2] in ['corto', 'compatto']:
                     database.show('short')
@@ -351,6 +403,11 @@ def cliHandler (args):
                     print("specific balances")
             else:
                 database.show()
+        elif args[1].lower() in ['prodotto']:
+            if len(args) == 3 and args[2].lower() in helpArguments:
+                print("inserimento HELP")
+            else:
+                database.write(' '.join(args[2:]))
                 
 
 database.read()
