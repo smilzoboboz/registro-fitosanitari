@@ -40,7 +40,7 @@ def alignText (text, offset):
     if max > 80:
         max = 80
     if len(text) < max:
-        return text
+        return "%s\n" % text
     while len(text) > max:
         counter = max-1
         while counter != 0:
@@ -109,6 +109,7 @@ def unitConversion (unit, qty):
 
 
 databaseProdotti = {}
+tolerance = 0.05  # tolerance on min-max dosage (5%)
 superfici = {'prosecco': 6.9540, 'pinot': 0.9946,}
 defaultPos = list(superfici)  # product usage areas; default = all areas
 lineaRegistro = re.compile('([0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]) (.*) (-*[.0-9]+)[ ]*([mMkK]*[lLgG])[ ]*[-<]*([^ ]*)[ ]*[#]*[ ]*(.*)')
@@ -218,6 +219,7 @@ class register:
         awfulList.sort(key=getKey)
         smartDate = ""
         carenza = 0
+        checkDatePrint = False
         for index in [ x[0] for x in awfulList]:
             name = registroTemporaneo[index]['name']
             date = registroTemporaneo[index]['date']
@@ -229,10 +231,11 @@ class register:
                 databaseTemporaneo[name] = {'qty': qty, 'unit': unit, 'num': 0}
             else:
                 databaseTemporaneo[name]['qty'] += qty
-            if date == smartDate:
+            if date == smartDate and checkDatePrint:
                 smartDate = "          "
             else:
-                smartDate = date
+                checkDatePrint = False
+                smartDate = "\n%s" % date
             if mode == 'reg':
                 if qty < 0:
                     colorModA = color.RED
@@ -241,11 +244,12 @@ class register:
                 if not search:
                     print("%s %s%s%s %s%6.2f%s %s | %5.2f %s  %s%s%s" % (
                         smartDate,
-                        color.CYAN, name.capitalize().rjust(15), color.END,
+                        color.CYAN, name.upper().rjust(18), color.END,
                         colorModA, qty, color.END, unit.ljust(2),
                         float(databaseTemporaneo[name]['qty']), unit.ljust(2),
                         color.GRAY, note, color.END
                     ))
+                    checkDatePrint = True
                 elif sum([[x.lower() for x in registroTemporaneo[index]['pos']].count(y) for y in search]):
                     today = datetime.datetime.strptime(datetime.datetime.today().strftime('%Y/%m/%d'), '%Y/%m/%d')
                     days = (today - datetime.datetime.strptime(date, '%Y/%m/%d')).days
@@ -256,36 +260,49 @@ class register:
                     if int(databaseProdotti[name]['num']):
                         numMax = '/%s' % str(databaseProdotti[name]['num']).ljust(2)
                     else:
-                        numMax = '   '
+                        numMax = '/- '
                     area = sum([superfici[x.lower()] for x in registroTemporaneo[index]['pos']])
                     if (
-                        (qty/area) > float(databaseProdotti[name]['minmax'][1]) or
-                        (qty/area) < float(databaseProdotti[name]['minmax'][0])):
+                        (qty/area) > float(databaseProdotti[name]['minmax'][1])*(1+tolerance) or
+                        (qty/area) < float(databaseProdotti[name]['minmax'][0])*(1-tolerance)):
                         qtyHa = "%s%.2f%s %s/ha (%.2f-%.2f %s/ha)" % (
                             color.RED, qty/area, color.END,
                             databaseProdotti[name]['unit'],
                             float(databaseProdotti[name]['minmax'][0]),
                             float(databaseProdotti[name]['minmax'][1]),
                             databaseProdotti[name]['unit'])
+                    elif (
+                        (qty/area) > float(databaseProdotti[name]['minmax'][1]) or
+                        (qty/area) < float(databaseProdotti[name]['minmax'][0])):
+                        qtyHa = "%.2f %s/ha (%.2f-%.2f %s/ha)" % (
+                            qty/area, databaseProdotti[name]['unit'],
+                            float(databaseProdotti[name]['minmax'][0]),
+                            float(databaseProdotti[name]['minmax'][1]),
+                            databaseProdotti[name]['unit'])
                     else:
-                        qtyHa = "%.2f%s" % (
+                        qtyHa = "%.2f %s" % (
                             qty/area, databaseProdotti[name]['unit'])
                     print("%s %s%s%s %6.2f %s | %d%s %s" % (
                         smartDate,
-                        color.CYAN, name.capitalize().rjust(15), color.END,
+                        color.CYAN, name.upper().rjust(18), color.END,
                         qty, unit.ljust(2),
                         databaseTemporaneo[name]['num'], numMax, qtyHa)
-                    )  # | trattamenti correnti/max
-            smartDate = date
+                    )
+                    checkDatePrint = True
+            if checkDatePrint:
+                smartDate = date
         if not search:
             if mode == 'reg':
-                print('-'*10)
-            for product in list(databaseTemporaneo):
-                print("%s%s%s %5.2f %s" % (
-                    color.CYAN, product.ljust(15).capitalize(), color.END,
-                    databaseTemporaneo[product]['qty'],
-                    databaseTemporaneo[product]['unit']
-                ))
+                print("\n%s" % ('-'*10))
+            for product in sorted(list(databaseTemporaneo)):
+                if (
+                    float(databaseTemporaneo[product]['qty']) > 0.001 or
+                    float(databaseTemporaneo[product]['qty']) < (-0.001)):
+                    print("%s%s%s %5.2f %s" % (
+                        color.CYAN, product.ljust(18).upper(), color.END,
+                        databaseTemporaneo[product]['qty'],
+                        databaseTemporaneo[product]['unit']
+                    ))
         else:
             print('-'*10)
             print("Carenza corrente: %d" % carenza)
@@ -299,7 +316,6 @@ class database:
         #   grifon 0.4 0.5 kg 5
         prog = re.compile('(.*) ([-.0-9]+) ([mMlLkKgG]+)[ha/]* ([0-9]+)[gG]* ([0-9]*) *([^#]*)#*(.*)')
         result = prog.match(line)
-        print(result.groups)
         name = result.group(1)
         if len(result.group(2).split('-')) > 1:
             min, max = result.group(2).split('-')
@@ -330,9 +346,9 @@ class database:
         with open(file, 'a', encoding='utf-8') as fp:
             fp.write("\n%s\n    min-max: %s %s/ha\n    carenza: %dgg\n    num: %d\n    obiettivo: %s\n    note: %s\n" % (
                 name, minmax, cUnit, carenza, num, obj, note))
-        print("Prodotto aggiunto correttamente:")
         print("\n%s\n    min-max: %s %s/ha\n    carenza: %dgg\n    num: %d\n    obiettivo: %s\n    note: %s%s%s" % (
             name, minmax, cUnit, carenza, num, obj, color.GRAY, alignText(note, 10), color.END))
+        print("%sProdotto aggiunto correttamente%s" % (color.GREEN, color.END))
 
     def read (file='prodotti.txt'):
         try:
@@ -364,16 +380,20 @@ class database:
             print("NOME%s  MIN-MAX   /ha  CARENZA  N  OBIETTIVO" % (' '*16))
         elif mode == 'complete':
             print("")
-        for entry in list(databaseProdotti):
+        for entry in sorted(list(databaseProdotti)):
             if mode == 'complete':
                 if int(databaseProdotti[entry]['num']):
                     num = "\n    trattamenti max: %s" % databaseProdotti[entry]['num']
                 else:
                     num = ""
-                print("%s%s%s\n    min-max: %.2f-%.2f %s/ha\n    carenza: %sgg%s\n    obiettivo: %s\n    note: %s%s%s" % (
+                min, max = databaseProdotti[entry]['minmax']
+                if float(min) == float(max):
+                    minmax = "%.2f" % (float(max))
+                else:
+                    minmax = "%.2f-%.2f" % (float(min), float(max))
+                print("%s%s%s\n    min-max: %s %s/ha\n    carenza: %sgg%s\n    obiettivo: %s\n    note: %s%s%s" % (
                     color.CYAN, entry.upper(), color.END,
-                    float(databaseProdotti[entry]['minmax'][0]), float(databaseProdotti[entry]['minmax'][1]),
-                    databaseProdotti[entry]['unit'],
+                    minmax, databaseProdotti[entry]['unit'],
                     databaseProdotti[entry]['carenza'], num,
                     databaseProdotti[entry]['obiettivo'],
                     color.GRAY, alignText(databaseProdotti[entry]['note'], 10), color.END
@@ -383,12 +403,17 @@ class database:
                     num = " %s" % str(databaseProdotti[entry]['num']).rjust(2)
                 else:
                     num = "  /"
+                columns, rows = shutil.get_terminal_size()
+                if len(databaseProdotti[entry]['obiettivo']) > (columns - 48):
+                    obiettivo = databaseProdotti[entry]['obiettivo'][:columns - 48 - 4] + "..."
+                else:
+                    obiettivo = databaseProdotti[entry]['obiettivo']
                 print("%s%s%s%.2f-%.2f %s/ha %sgg%s %s" % (
-                    color.CYAN, entry.capitalize().ljust(20), color.END, 
+                    color.CYAN, entry.upper().ljust(20), color.END, 
                     float(databaseProdotti[entry]['minmax'][0]), float(databaseProdotti[entry]['minmax'][1]),
                     databaseProdotti[entry]['unit'].rjust(2),
                     databaseProdotti[entry]['carenza'].rjust(6), num,
-                    databaseProdotti[entry]['obiettivo'],
+                    obiettivo,
                 ))
 
 def cliHandler (args):
