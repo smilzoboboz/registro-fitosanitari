@@ -2,19 +2,230 @@
 Grifon più WG
     min-max: 2.00-3.00 kg/ha
     carenza: 20gg
+    num: 0
+    obiettivo: Peronospora, Escoriosi, Marciume nero, Melanosi, Rossore parassitario
     note: Intervenire preventivamente. Nel caso di elevata pressione infettiva o condizioni atmosferiche particolarmente piovose, può essere utile innalzare la dose fino a 400 g/hl
 
 Tiolene
     min-max: 1.00-1.50 l/ha
     carenza: 5gg
+    num: 0
+    obiettivo: Oidio
     note: Trattamenti preventivi o alla comparsa dei primi sintomi ripetendo i trattamenti in funzione della pressione della malattia
 
 Soleil 50 WG
     min-max: 0.40-0.50 kg/ha
     carenza: 10gg
+    num: 0
+    obiettivo: Peronospora
     note: Trattamenti ogni 10-12 gg, preferibilmente in miscela con altri antiperonosporici di copertura o a differente meccanismo d'azione.
 
-Basta
+Basta 200
     min-max: 3.00-3.75 l/ha
     carenza: 14gg
+    num: 2
+    obiettivo: Erbicida
     note: 1-2 trattamenti/anno. Concentrazione consigliata 1,2%. Temperatura minima di applicazione > 5°C. Altezza massima infestanti: 25 cm. Lunghezza massima polloni:15 cm.
+
+Foliane 80 WG
+    min-max: 1.50 kg/ha
+    carenza: 28gg
+    num: 0
+    obiettivo: Escoriosi, Marciume Nero, Peronospora
+    note: Fungicida organico per la difesa di vite e pomodoro, di copertura con attività preventiva, che agisce essenzialmente impedendo la germinazione delle spore dei funghi e la crescita del micelio. E' caratterizzato da una buona persistenza d'azione, da attribuirsi anche alla sua ottima resistenza al dilavamento.
+
+Prevint Top
+    min-max: 2.50 kg/ha
+    carenza: 35gg
+    num: 3
+    obiettivo: Peronospora
+    note: In caso di elevata pressione della malattia, rapido accrescimento e forte piovosità si consigliano le dosi più elevate e gli intervalli più brevi.
+
+Zoxium 240 SC
+    min-max: 0.62-0.75 l/ha
+    carenza: 28gg
+    num: 5
+    obiettivo: Peronospora, Botrite
+    note: Per evitare l’insorgenza di fenomeni di resistenza, applicare sempre il prodotto alla dose consigliata e in miscela con fungicidi antiperonosporici a diverso meccanismo di azione.
+
+Tiogold Disperss
+    min-max: 2.00-4.00 kg/ha
+    carenza: 5gg
+    num: 0
+    obiettivo: Oidio
+    note: La dose può aumentare a 800 g/hl in situazioni mediamente gravi o 1200 g/hl in caso di forte pressione della malattia.
+
+Applaud Plus
+    min-max: 1.00-1.50 kg/ha
+    carenza: 21gg
+    num: 0
+    obiettivo: Cicaline, Cocciniglie
+    note: Insetticida regolatore di crescita che agisce per contatto, per ingestione e per asfissia. Dotato di attività citotropica, blocca la crescita degli stadi giovanili dei parassiti interferendo nei processi di formazione della chitina. Può inoltre inibire l’ovodeposizione e la schiusura delle uova.
+
+Cyprus 25 DF
+    min-max: 2.40-2.90 kg/ha
+    carenza: 20gg
+    num: 0
+    obiettivo: Peronospora, Escoriosi, Marciume nero, Melanosi, Rossore parassitario
+    note: Trattamenti cadenzati a 7-8 giorni in funzione preventiva. Utilizzare la dose più elevata in caso di forte pressione della malattia e andamento stagionale molto piovoso.
+
+Crittovit WG
+    min-max: 2.00-4.00 kg/ha
+    carenza: 5gg
+    num: 0
+    obiettivo: Oidio
+    note: Trattamenti preventivi. Nelle situazioni di alta pressione infettiva e/o in programmi che prevedono l’alternanza di Crittovit WG con principi attivi a differente meccanismo d’azione è possibile aumentare la dose a 600-800 g/hl. L’impiego alla dose massima (800 g per 100 litri di acqua) è risultato completamente selettivo sulle seguenti varietà: Canaiolo, Trebbiano, Malvasia, Chardonnay, Cabernet, Pinot, Merlot. Non impiegare il prodotto alla dose massima su varietà diverse da quelle indicate prima di aver effettuato saggi preliminari su piccole superfci o aver consultato il personale tecnico.
+
+Vivando
+    min-max: 0.20-0.25 l/ha
+    carenza: 28gg
+    num: 3
+    obiettivo: Oidio
+    note:  Utilizzare in maniera preventiva nell’ambito di un programma di trattamenti che preveda la rotazione di sostanze attive caratterizzate da un diverso meccanismo d’azione. Per sfruttare appieno le potenzialità del prodotto, si consiglia l’uso ad inizio dei trattamenti e nella fase di maggiore sensibilità all’Oidio.
+
+Mildicut
+    min-max: 3.50-4.50 l/ha
+    carenza: 21gg
+    num: 4
+    obiettivo: Peronospora
+    note: Il prodotto non influenza negativamente la fermentazione e non evidenzia effetti sulle caratteristiche biochimiche del vino, preservando la componente aromatica dei mosti bianchi.
+
+Dynali
+    min-max: 0.65 l/ha
+    carenza: 21gg
+    num: 2
+    obiettivo: Oidio, Marciume nero, Rossore parassitario
+    note: Eseguire 2 trattamenti ad intervalli di 10-12 giorni a partire dallo stadio di 3 foglie.
+
+Shelter
+    min-max: 0.25-0.50 kg/ha
+    carenza: 10gg
+    num: 0
+    obiettivo: Peronospora
+    note: Evitare nella stessa stagione di effettuare trattamenti ripetuti di prodotto da solo, ricorrendo a miscele estemporanee ed all’alternanza con altri antiperonosporici. La dose minima di prodotto non deve essere inferiore, anche in miscela, a 250 g/ha. Non miscelare con prodotti a reazione alcalina o fortemente acida.
+
+Tepeta Combi
+    min-max: 2.50-3.00 kg/ha
+    carenza: 28gg
+    num: 0
+    obiettivo: Peronospora
+    note: Non trattare durante la fioritura. Distanziare l’uso prudenzialmente di 21 gg, dall’applicazione di olii minerali. Non miscibile con olii minerali; se si usa un olio minerale estivo è possibile distanziare i trattamenti come specificato nel paragrafo avvertenze di Agrumin.
+
+Sphinx SC
+    min-max: 0.40-0.50 l/ha
+    carenza: 10gg
+    num: 0
+    obiettivo: Peronospora
+    note: Fungicida antiperonosporico dotato di sistemia locale e di attività preventiva, curativa e antisporulante. Viene rapidamente assorbito (1-2- ore dal trattamento) e si distribuisce nella foglia in modo traslaminare. Dotato di ampia flessibilità, può essere impiegato in tutte le fasi fenologiche della vite. Trattamenti preventivi ogni 10-12 gg.
+
+Sponsor
+    min-max: 0.15-0.20 l/ha
+    carenza: 21gg
+    num: 4
+    obiettivo: Oidio, Marciume nero
+    note: 3-4 trattamenti preventivi ogni 10-14 giorni.
+
+Switch
+    min-max: 0.80 kg/ha
+    carenza: 21gg
+    num: 2
+    obiettivo: Muffa grigia, Marciumi secondari del grappolo
+    note: 1 trattamento in pre-chiusura grappolo e 1 trattamento all’invaiatura o in pre-raccolta. Effettuare un massimo di 2 interventi.
+
+Fertiactyl Radical
+    min-max: 5.00 l/ha
+    carenza: 0gg
+    num: 0
+    obiettivo: Concime CE
+    note: Non applicare il prodotto in condizioni di bassa temperatura, In caso di temperatura elevata applicare il prodotto al mattino presto o in serata.
+
+KSC Physio H
+    min-max: 0.30-4.00 kg/ha
+    carenza: 0gg
+    num: 0
+    obiettivo: Concime CE
+    note: Aggiungere sempre il pHysio H nell’acqua, mai l’acqua nel pHysio H. Aggiungere possibilmente pHysio H nella botte mezza piena d’acqua, poi aggiungere gli altri formulati come consuetudine.
+
+Vector
+    min-max: 0.40-1.00 l/ha
+    carenza: 0gg
+    num: 0
+    obiettivo: Patogeni funghini, Insetti, Infestanti
+    note: 40-50 ml/hl come bagnante in aggiunta ad insetticidi o funghicidi, 100 ml/hl come bagnante in aggiunta a diserbanti.
+
+Thiocur forte
+    min-max: 1.00-1.50 l/ha
+    carenza: 15gg
+    num: 4
+    obiettivo: Oidio, Marciume nero
+    note: Deve essere preferibilmente impiegato in maniera preventiva su tutte le colture autorizzate. In caso di elevata pressione della malattia e rapido accrescimento si consigliano le dosi più elevate e gli intervalli più brevi.
+
+Folpec 50 SC
+    min-max: 2.00-3.00 l/ha
+    carenza: 28gg
+    num: 10
+    obiettivo: Peronospora, Escoriosi
+    note: Due trattamenti allo stadio di 7-8 foglie, a partire dal germogliamento e dopo circa 1 settimana a 0.5-1.5 l/hl.
+
+Patriot Dry
+    min-max: 1.00 kg/ha
+    carenza: 0gg
+    num: 0
+    obiettivo: Mal dell’esca
+    note: Dopo la potatura, invernale o primaverile, intervenire irrorando sul tralcio con ferite esposte una sospensione di 250 g/100 l, avendo cura di dirigere il getto degli ugelli quanto più possibile sui tagli della potatura. Impiegare un volume di trattamento non inferiore a 400 l/ha per distribuire almeno 1 kg di prodotto a ettaro ed eseguire l’applicazione non oltre la fne della fase di pianto della vite. Nei vigneti a forte rischio di malattia (reimpianto su vigneto fortemente colpito, elevata presenza di malattia nei vigneti circostanti) l’intervento dopo la potatura primaverile può essere seguito da un secondo trattamento entro la fase di germogliamento, allo stesso dosaggio, per aumentare il grado di colonizzazione delle ferite.
+
+Goal 480 SC
+    min-max: 1.50 l/ha
+    carenza: 0gg
+    num: 0
+    obiettivo: Erbicida
+    note: In tutte le colture il prodotto deve essere impiegato solo con applicazioni a bande lungo la fla nel periodo compreso tra l’ultima decade di settembre e la prima decade di maggio.
+
+Penncozeb DG
+    min-max: 2.00-2.50 kg/ha
+    carenza: 28gg
+    num: 6
+    obiettivo: Peronospora, Escoriosi, Antracnosi, Marciume nero
+    note: 
+
+Kumulus Tecno
+    min-max: 2.00-8.00 kg/ha
+    carenza: 5gg
+    num: 0
+    obiettivo: Oidio
+    note: Evitare di trattare nelle ore più calde della giornata.
+
+Vondozeb DG
+    min-max: 2.00-2.50 kg/ha
+    carenza: 28gg
+    num: 6
+    obiettivo: Peronospora, Escoriosi, Antracnosi, Marciume nero
+    note: 
+
+Basfoliar Aktiv
+    min-max: 2.00-3.00 l/ha
+    carenza: 0gg
+    num: 0
+    obiettivo: Fertilizzante
+    note: 2-3 applicazioni dalla ripresa vegetativa alla pre-fioritura.
+
+Ridomil Gold Combi
+    min-max: 2.00 kg/ha
+    carenza: 28gg
+    num: 3
+    obiettivo: Peronospora
+    note: 
+
+Coragen
+    min-max: 0.15-0.18 l/ha
+    carenza: 30gg
+    num: 0
+    obiettivo: Insetticida
+    note: 
+
+Heliocuivre S
+    min-max: 1.40-3.00 l/ha
+    carenza: 20gg
+    num: 0
+    obiettivo: Peronospora
+    note: 

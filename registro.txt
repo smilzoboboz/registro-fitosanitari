@@ -1,4 +1,105 @@
 2017/07/12 grifon più wg 20.00 kg
 2017/07/12 soleil 50 wg 4.00 kg
 2017/07/12 tiolene 20.00 l
-2017/07/12 basta 5.00 l
+2017/07/12 basta 200 5.00 l
+2017/07/17 grifon più wg -6.66 kg
+2017/07/17 tiolene -12.00 l
+2017/07/17 soleil 50 wg -4.00 kg
+2017/07/17 foliane 80 wg -8.00 kg <-prosecco
+2017/06/08 foliane 80 wg 20.00 kg
+2017/06/08 prevint top 20.00 kg
+2017/06/08 zoxium 240 sc 6.00 l
+2017/06/14 prevint top 20.00 kg
+2017/06/14 foliane 80 wg 20.00 kg
+2017/06/14 tiogold disperss 24.00 kg
+2017/06/14 applaud plus 8.00 kg
+2017/06/16 applaud plus 3.00 kg
+2017/06/21 zoxium 240 sc 6.00 l
+2017/06/21 cyprus 25 df 20.00 kg
+2017/06/21 crittovit wg 20.00 kg
+2017/06/21 vivando 2.00 l
+2017/06/27 mildicut 30.00 l
+2017/06/27 dynali 5.00 l
+2017/06/28 shelter 4.00 kg
+2017/07/06 tepeta combi 30.00 kg
+2017/07/06 sphinx sc 4.00 l
+2017/07/06 sponsor 1.50 l
+2017/07/17 switch 1.00 kg
+2017/07/07 tepeta combi -24.00 kg
+2017/07/07 sphinx sc -4.00 l
+2017/07/07 sponsor -1.50 l
+2017/06/30 mildicut -30.00 l
+2017/06/30 shelter -4.00 kg
+2017/06/30 dynali -5.00 l
+2017/06/23 zoxium 240 sc -6.00 l
+2017/06/23 cyprus 25 df -20.00 kg
+2017/06/23 crittovit wg -20.00 kg
+2017/06/23 vivando -2.00 l
+2017/06/16 prevint top -20.00 kg
+2017/06/16 foliane 80 wg -16.00 kg
+2017/06/16 tiogold disperss -24.00 kg
+2017/06/16 applaud plus -11.00 kg
+2017/06/09 zoxium 240 sc -6.00 l
+2017/06/09 foliane 80 wg -12.00 kg
+2017/06/09 prevint top -20.00 kg
+2017/05/23 fertiactyl radical 20.00 l
+2017/05/23 ksc physio h 7.50 kg
+2017/05/23 vector 5.00 l
+2017/05/18 folpec 50 sc 20.00 l
+2017/05/18 tiogold disperss 25.00 kg
+2017/05/17 thiocur forte 25.00 l
+2017/03/14 patriot dry 8.00 kg
+2017/03/14 goal 480 sc 4.00 l
+2017/04/06 penncozeb dg 20.00 kg
+2017/04/06 tiogold disperss 25.00 kg
+2017/04/14 kumulus tecno 25.00 kg
+2017/04/14 ksc physio h 7.50 kg
+2017/04/19 kumulus tecno 25.00 kg
+2017/04/19 vondozeb dg 40.00 kg
+2017/04/27 sphinx sc 3.00 l
+2017/04/27 basfoliar aktiv 20.00 l
+2017/04/28 vector 5.00 l
+2017/05/04 prevint top 10.00 kg
+2017/05/04 shelter 3.00 kg
+2017/05/04 folpec 50 sc 20.00 l
+2017/05/04 kumulus tecno 25.00 kg
+2017/05/11 ridomil gold combi 50.00 kg
+2017/05/11 thiocur forte 10.00 l
+2017/05/11 coragen 0.30 l
+2017/03/17 patriot dry -8.00 kg
+2017/03/18 goal 480 sc -4.00 l
+2017/04/07 penncozeb dg -10.00 kg
+2017/04/07 tiogold disperss -12.50 kg
+2017/04/14 penncozeb dg -10.00 kg
+2017/04/14 tiogold disperss -12.50 kg
+2017/04/21 kumulus tecno -18.00 kg
+2017/04/21 vondozeb dg -15.00 kg
+2017/04/21 sphinx sc -3.00 l
+2017/04/29 kumulus tecno -18.00 kg
+2017/04/29 vondozeb dg -15.00 kg
+2017/04/29 sphinx sc -3.00 l
+2017/04/29 vector -3.00 l
+2017/05/04 kumulus tecno -18.00 kg
+2017/05/04 folpec 50 sc -12.00 l
+2017/05/04 shelter -3.00 kg
+2017/05/08 vondozeb dg -10.00 kg
+2017/05/08 prevint top -6.50 kg
+2017/05/13 vector -2.00 l
+2017/05/13 ridomil gold combi -16.00 kg
+2017/05/13 thiocur forte -10.00 l
+2017/05/18 tiogold disperss -32.00 kg
+2017/05/18 folpec 50 sc -16.00 l
+2017/05/18 coragen -0.15 l
+2017/05/25 vector -3.00 l
+2017/05/25 ridomil gold combi -16.00 kg
+2017/05/25 thiocur forte -10.00 l
+2017/06/01 vector -3.00 l
+2017/06/01 ridomil gold combi -16.00 kg
+2017/06/01 thiocur forte -10.00 l
+2017/06/09 kumulus tecno -21.00 kg  # Identificato come "zolfo" nelle dosi di pompaggio
+2017/07/18 switch -0.80 kg <-pinot
+2017/07/18 switch -0.20 kg <-prosecco
+2017/07/13 basta 200 -5.00 l
+2017/07/20 heliocuivre s 10.00 l
+2017/07/20 ksc physio h 7.50 kg
+2017/07/20 shelter 4.00 kg
