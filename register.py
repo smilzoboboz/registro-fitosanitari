@@ -27,10 +27,6 @@ def add (line, metodo='add', quiet=False, preview=True):
         int(line.split(' ')[0].split('/')[0])
     except ValueError:
         line = datetime.date.today().strftime('%Y/%m/%d ') + line
-    if preview:
-        noffset = 1
-    else:
-        noffset = 0
     # match the string and find key values
     prog = lineaRegistro
     result = prog.match(line)
@@ -68,8 +64,14 @@ def add (line, metodo='add', quiet=False, preview=True):
             "continuare con l'inserimento dei dati.")
         raise ProductException()
     productLine['unit'] = products.validate.unit(unit, productLine['name'])
+    if preview:
+        noffset = 1
+        qoffset = productLine['qty']
+    else:
+        noffset = 0
+        qoffset = 0
     # On-screen print
-    show(productLine, tnum=noffset)
+    show(productLine, tnum=noffset, tleft=qoffset)
     # Format optional arguments for register witing
     if 'pos' in list(productLine):
         if len(productLine['pos']) == len(list(products.areas)):
@@ -95,7 +97,7 @@ def add (line, metodo='add', quiet=False, preview=True):
             productLine['qty'], productLine['unit'], warea, wnote))
 
 
-def show (pline, mode='full', showDate=True, tnum=0, mask=[]):
+def show (pline, mode='full', showDate=True, tnum=0, mask=[], tleft=0):
     """ General purpose regiter-line display
     
     Display regiter lines as colour formatter entries with additional data
@@ -171,6 +173,7 @@ def show (pline, mode='full', showDate=True, tnum=0, mask=[]):
                 pnumColor, pnum, color.END, pnmax, pqmax, area))
             counter += 1
     else:
+        pleft = getRemaining(pline['name'].lower(), pline['date'], tleft)
         if pline['qty'] < 0:
             pqtyColor = color.RED
         else:
@@ -180,9 +183,9 @@ def show (pline, mode='full', showDate=True, tnum=0, mask=[]):
         else:
             pnotes = ""
         # Print to screen register form
-        print("%s %s %s%6.2f%s %s%s" % (
+        print("%s %s %s%6.2f%s %s | %6.2f %s %s" % (
             pdate, pname, pqtyColor, pline['qty'], color.END,
-            pline['unit'], pnotes))
+            pline['unit'].ljust(2), pleft, pline['unit'], pnotes))
 
 
 def readSource (file='registro.txt'):
@@ -220,15 +223,25 @@ def getNum (product, area, date, offset=0):
             counter += 1
     return counter
 
+def getRemaining (product, date=datetime.datetime.today(), offset=0):
+    if len(list(data)) == 0:
+        readSource()
+    counter = offset
+    for item in data:
+        if (data[item]['name'] == product.lower() and 
+            date >= data[item]['date']):
+            counter += data[item]['qty']
+    return counter
 
-def read (mode='reg', search=None, file='registro.txt'):
+
+def read (mode='reg', search="", file='registro.txt'):
     readSource(file)
     awfulList = [[x, data[x]['date']] for x in list(data)]
     #TODO Add reverse sorting
     awfulList.sort(key=getKey)
     tmpDate = ""
     for index in [x[0] for x in awfulList]:
-        if search:
+        if len(search) > 0:
             counter = 0
             mask = []
             for item in search.split(' '):
