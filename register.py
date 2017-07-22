@@ -11,7 +11,7 @@ from tools import readDate, unitConversion, ProductException, color, query_yes_n
 data = {}
 lineaRegistro = re.compile('([0-9/]*) (.*) (-*[.0-9]+)[ ]*([mMkK]*[lLgG])[ ]*[-<]*([^# ]*)[ ]*[#]*[ ]*(.*)')
 
-def add (line, metodo='add', quiet=False):
+def add (line, metodo='add', quiet=False, preview=True):
     """ Add entries to the registry
     
     Changes can be either product acquisition or usage. Usage takes the area of
@@ -27,6 +27,10 @@ def add (line, metodo='add', quiet=False):
         int(line.split(' ')[0].split('/')[0])
     except ValueError:
         line = datetime.date.today().strftime('%Y/%m/%d ') + line
+    if preview:
+        noffset = 1
+    else:
+        noffset = 0
     # match the string and find key values
     prog = lineaRegistro
     result = prog.match(line)
@@ -65,7 +69,7 @@ def add (line, metodo='add', quiet=False):
         raise ProductException()
     productLine['unit'] = products.validate.unit(unit, productLine['name'])
     # On-screen print
-    show(productLine)
+    show(productLine, tnum=noffset)
     # Format optional arguments for register witing
     if 'pos' in list(productLine):
         if len(productLine['pos']) == len(list(products.areas)):
@@ -91,7 +95,7 @@ def add (line, metodo='add', quiet=False):
             productLine['qty'], productLine['unit'], warea, wnote))
 
 
-def show (pline, mode='full', showDate=True):
+def show (pline, mode='full', showDate=True, tnum=0, mask=[]):
     """ General purpose regiter-line display
     
     Display regiter lines as colour formatter entries with additional data
@@ -120,8 +124,12 @@ def show (pline, mode='full', showDate=True):
     pname = "%s%s%s" % (
         color.CYAN, pline['name'].upper().rjust(18), color.END)
     if 'pos' in list(pline):
+        productData = products.getData()[pline['name']]
         counter = 1
         for area in pline['pos']:
+            if len(mask) > 0 and area not in mask:
+                continue
+            # quantity per /ha computation
             if counter == len(pline['pos']) and counter > 1:
                 pqty = -pline['qty'] - pqty
                 pdate = "          "
@@ -129,9 +137,21 @@ def show (pline, mode='full', showDate=True):
                 pqty = (-pline['qty'] / \
                         sum([products.areas[x] for x in pline['pos']])) * \
                         products.areas[area]
-            #TODO: check trattamenti massimi
+            # Max number of product usage per season
+            pnum = getNum(pline['name'].lower(), area, pline['date'], tnum)
+            if pnum > productData['num'] and productData['num'] > 0:
+                pnumColor = color.RED
+            elif pnum == productData['num']:
+                pnumColor = color.YELLOW
+            else:
+                pnumColor = ""
+            if productData['num'] == 0:
+                pnmax = "-"
+            else:
+                pnmax = productData['num']
+            # Minimum/maximum usage per /ha
             pqmax = pqty/products.areas[area]
-            minmax = products.getData()[pline['name']]['minmax']
+            minmax = productData['minmax']
             if (pqmax > minmax[1]*1.05 or pqmax < minmax[0]*0.95):
                 pqmaxColor = color.RED
             elif (pqmax > minmax[1] or pqmax < minmax[0]):
@@ -145,8 +165,10 @@ def show (pline, mode='full', showDate=True):
                     minmax[0], minmax[1], pline['unit'])
             pqmax = "%s%.2f%s %s/ha%s" % (
                 pqmaxColor, pqmax, color.END, pline['unit'], ref)
-            print("%s %s %6.2f %s | %s <- %s" % (
-                pdate, pname, pqty, pline['unit'].ljust(2), pqmax, area))
+            # Print to screen usage form
+            print("%s %s %6.2f %s | %s%d%s/%s %s <- %s" % (
+                pdate, pname, pqty, pline['unit'].ljust(2),
+                pnumColor, pnum, color.END, pnmax, pqmax, area))
             counter += 1
     else:
         if pline['qty'] < 0:
@@ -157,6 +179,7 @@ def show (pline, mode='full', showDate=True):
             pnotes = "  %s# %s%s" % (color.GRAY, pline['notes'], color.END)
         else:
             pnotes = ""
+        # Print to screen register form
         print("%s %s %s%6.2f%s %s%s" % (
             pdate, pname, pqtyColor, pline['qty'], color.END,
             pline['unit'], pnotes))
@@ -187,22 +210,51 @@ def readSource (file='registro.txt'):
         counter += 1
     
 
+def getNum (product, area, date, offset=0):
+    if len(list(data)) == 0:
+        readSource()
+    counter = offset
+    for item in data:
+        if (data[item]['name'] == product.lower() and data[item]['qty'] < 0 and
+            area.lower() in data[item]['pos'] and date >= data[item]['date']):
+            counter += 1
+    return counter
+
+
 def read (mode='reg', search=None, file='registro.txt'):
     readSource(file)
     awfulList = [[x, data[x]['date']] for x in list(data)]
     #TODO Add reverse sorting
     awfulList.sort(key=getKey)
     tmpDate = ""
-    for index in [ x[0] for x in awfulList]:
-        if tmpDate != data[index]['date']:
-            showDate = True
-            tmpDate = data[index]['date']
-        else:
-            showDate = False
+    for index in [x[0] for x in awfulList]:
+        if search:
+            counter = 0
+            mask = []
+            for item in search.split(' '):
+                if item.lower() in products.areas:
+                    mask.append(item.lower())
+            for item in list(data[index]):
+                for entry in search.split(' '):
+                    if str(data[index][item]).count(entry):
+                        counter += 1
+            if counter == 0:
+                continue
         if mode == 'reg':
+            if tmpDate != data[index]['date']:
+                showDate = True
+                tmpDate = data[index]['date']
+            else:
+                showDate = False
             show(data[index], mode='reg', showDate=showDate)
         else:
-            show(data[index], mode='use', showDate=showDate)
+            if data[index]['qty'] < 0:
+                if tmpDate != data[index]['date']:
+                    showDate = True
+                    tmpDate = data[index]['date']
+                else:
+                    showDate = False
+                show(data[index], mode='use', showDate=showDate, mask=mask)
     #TODO: vvvvv -From this line onward- vvvvv
     quit(0)
     if not search:
