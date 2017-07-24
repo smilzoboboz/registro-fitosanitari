@@ -10,16 +10,23 @@ import register
 
 def cliHandler (args):
     helpArguments = ['help', 'aiuto']
+    pquiet = False
+    preport = False
     if len(args) <= 1:
         print("HELP")
     elif len(args) > 1:
         # parse --quiet option
         for index in list(range(len(args[2:]))):
-            if args[index] == '--quiet':
-                del args[index]
+            print(args)
+            if args[index+2] == '--quiet':
+                del args[index+2]
                 pquiet = True
-            else:
-                pquiet = False
+                break
+        for index in list(range(len(args[2:]))):
+            if args[index+2] == '--report':
+                del args[index+2]
+                preport = True
+                break
         # parte 'add' meta-command
         if args[1].lower() in ['add', 'agg']:
             if len(args) == 2 or args[2].lower() in helpArguments:
@@ -43,7 +50,7 @@ def cliHandler (args):
                 if args[index+2] in products.areas:
                     rmode = 'use'
                     break
-            register.read(rmode, ' '.join(args[2:]))
+            register.read(rmode, ' '.join(args[2:]), report=preport)
         #TODO: vvv -NOT DONE YET- vvv
         elif args[1].lower() in ['bilancio', 'bal', 'bil']:
             register.read('bal')

@@ -2,7 +2,8 @@
 2017/07/12 soleil 50 wg 4.00 kg
 2017/07/12 tiolene 20.00 l
 2017/07/12 basta 200 5.00 l
-2017/07/17 grifon più wg -6.66 kg
+2017/07/17 grifon più wg -2.50 kg <-pinot
+2017/07/17 grifon più wg -4.16 kg <-prosecco
 2017/07/17 tiolene -12.00 l
 2017/07/17 soleil 50 wg -4.00 kg
 2017/07/17 foliane 80 wg -8.00 kg <-prosecco
@@ -63,7 +64,7 @@
 2017/05/04 shelter 3.00 kg
 2017/05/04 folpec 50 sc 20.00 l
 2017/05/04 kumulus tecno 25.00 kg
-2017/05/11 ridomil gold combi 50.00 kg
+2017/05/11 ridomil gold combi pepite 50.00 kg
 2017/05/11 thiocur forte 10.00 l
 2017/05/11 coragen 0.30 l
 2017/03/17 patriot dry -8.00 kg
@@ -85,16 +86,16 @@
 2017/05/08 vondozeb dg -10.00 kg
 2017/05/08 prevint top -6.50 kg
 2017/05/13 vector -2.00 l
-2017/05/13 ridomil gold combi -16.00 kg
+2017/05/13 ridomil gold combi pepite -16.00 kg
 2017/05/13 thiocur forte -10.00 l
 2017/05/18 tiogold disperss -32.00 kg
 2017/05/18 folpec 50 sc -16.00 l
 2017/05/18 coragen -0.15 l
 2017/05/25 vector -3.00 l
-2017/05/25 ridomil gold combi -16.00 kg
+2017/05/25 ridomil gold combi pepite -16.00 kg
 2017/05/25 thiocur forte -10.00 l
 2017/06/01 vector -3.00 l
-2017/06/01 ridomil gold combi -16.00 kg
+2017/06/01 ridomil gold combi pepite -16.00 kg
 2017/06/01 thiocur forte -10.00 l
 2017/06/09 kumulus tecno -21.00 kg  # Identificato come "zolfo" nelle dosi di pompaggio
 2017/07/18 switch -0.80 kg <-pinot

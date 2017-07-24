@@ -209,7 +209,7 @@ Basfoliar Aktiv
     obiettivo: Fertilizzante
     note: 2-3 applicazioni dalla ripresa vegetativa alla pre-fioritura.
 
-Ridomil Gold Combi
+Ridomil Gold Combi Pepite
     min-max: 2.00 kg/ha
     carenza: 28gg
     num: 3
@@ -220,7 +220,7 @@ Coragen
     min-max: 0.15-0.18 l/ha
     carenza: 30gg
     num: 0
-    obiettivo: Insetticida
+    obiettivo: lepidotteri
     note: 
 
 Heliocuivre S

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 1122.6667 793.33331"
+   height="793.33331"
+   width="1122.6667"
+   xml:space="preserve"
+   id="svg10"
+   version="1.1">
+<metadata
+     id="metadata16"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata>
+<style>
+    /* <![CDATA[ */
+    text.scheda {
+      font-family: Liberation Sans Narrow;
+      font-size: 16px;
+    }
+    text.titoli {
+      font-family: Liberation Sans Narrow;
+      font-weight: bold;
+      font-size: 18.66666667px;
+    }
+    /* ]]> */
+</style>
+<!-- Intro top -->
+<rect x="456" y="57" width="211" height="49" fill="none" stroke="black" stroke-width="1" />
+<text x="561" y="85" text-anchor="middle" style="font-size:24px;">USO AGRICOLO</text>
+<text x="561" y="151" class="titoli" style="font-size:21px" text-anchor="middle">TRATTAMENTI CON PRODOTTI FITOSANITARI</text>
+<text x="561" y="173" class="scheda" style="font-size:21px" text-anchor="middle">ANNO:  2017</text><!-- MODIFICA-->
+<rect x="949" y="107" width="79" height="25" fill="none" stroke="black" stroke-width="0.75" />
+<text x="1027" y="126" class="titoli" style="font-size:21px" text-anchor="end">scheda B</text>
+<!-- Intro left -->
+<text x="76" y="213.5" class="titoli" text-anchor="start">COLTURA</text>
+<text x="76" y="233" class="scheda" text-anchor="start">SUPERFICIE in ettari</text>
+<text x="76" y="251" class="scheda" text-anchor="start">PROTETTA</text>
+<text x="203" y="251" class="scheda" style="font-size: 13px;" text-anchor="middle">☐</text>
+<text x="76" y="269" class="scheda" text-anchor="start">PIENO CAMPO</text>
+<text x="203" y="269" class="scheda" style="font-size: 13px;" text-anchor="middle">🗹</text>
+<text x="274" y="213.5" class="titoli" text-anchor="end">Vite</text>
+<!-- intro right -->
+<text x="406" y="213.5" class="titoli" text-anchor="start">VARIETÀ RIFERIMENTO</text>
+<text x="406" y="233" class="scheda" text-anchor="start">DATA INIZIO RACCOLTA</text>
+<!-- Table titles-->
+<rect x="71" y="286" width="941" height="74" stroke="none" fill="#f2f2f2" />
+<text x="114" y="325" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">DATA</text>
+<text x="256.5" y="309" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">NOME COMMERCIALE</text>
+<text x="256.5" y="326" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">PRODOTTO</text>
+<text x="256.5" y="343" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">FITOSANITARIO</text>
+<text x="393" y="309" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">QUANTITÀ</text>
+<text x="393" y="326" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">IMPIEGATA</text>
+<text x="393" y="351" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">litri o chili</text>
+<text x="470" y="309" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">SUPERFICIE</text>
+<text x="470" y="326" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">TRATTATA</text>
+<text x="470" y="351" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">ettari</text>
+<text x="591" y="309" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">AVVERSITÀ CHE RENDE</text>
+<text x="591" y="326" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">NECESSARIO IL</text>
+<text x="591" y="343" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">TRATTAMENTO</text>
+<text x="761" y="317.5" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">NOME DI CHI EFFETTUA</text>
+<text x="761" y="334.5" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">IL TRATTAMENTO</text>
+<text x="931" y="325" class="scheda" style="font-weight:bold;font-size:15px;" text-anchor="middle">NOTE</text>
+<line x1="71" y1="287" x2="1011" y2="287" stroke="black" stroke-width="0.70" />
+<line x1="71" y1="286.65" x2="71" y2="360" stroke="black" stroke-width="0.70" />
+<line x1="157" y1="287" x2="157" y2="360" stroke="black" stroke-width="0.70" />
+<line x1="356" y1="287" x2="356" y2="360" stroke="black" stroke-width="0.70" />
+<line x1="429" y1="287" x2="429" y2="360" stroke="black" stroke-width="0.70" />
+<line x1="510" y1="287" x2="510" y2="360" stroke="black" stroke-width="0.70" />
+<line x1="671" y1="287" x2="671" y2="360" stroke="black" stroke-width="0.70" />
+<line x1="851" y1="287" x2="851" y2="360" stroke="black" stroke-width="0.70" />
+<line x1="1011" y1="286.65" x2="1011" y2="360" stroke="black" stroke-width="0.70" />
+<line x1="71" y1="360" x2="1011" y2="360" stroke="black" stroke-width="0.70" />
