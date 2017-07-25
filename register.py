@@ -78,7 +78,7 @@ def add (line, metodo='add', quiet=False, preview=True):
         if len(productLine['pos']) == len(list(products.areas)):
             warea = ""
         else:
-            warea = " <- %s" % ','.join(productLine['pos'])
+            warea = " <-%s" % ','.join(productLine['pos'])
     else:
         warea = ""
     if 'notes' in list(productLine):
@@ -280,7 +280,8 @@ def getRemaining (product, date=datetime.datetime.today(), offset=0):
         if (data[item]['name'] == product.lower() and 
             date >= data[item]['date']):
             counter += data[item]['qty']
-    return (counter, data[item]['unit'])
+            index = item
+    return (counter, data[index]['unit'])
 
 
 def read (mode='reg', search="", file='registro.txt', report=False):
@@ -361,7 +362,7 @@ def printReport (tList, ty=360, offset=1, area=""):
     currentDocument = []
     for lineDict in tList[1:]:
         # calcola altezze prima di stampare (margine basso pagina)
-        if ty + 18 * len(lineDict['names']) + 12 > 700:
+        if ty + 18 * len(lineDict['names']) + 12 > 700 or lineDict == tList[-1]:
             with open('scheda_B(%d).svg' % (pageCount + offset*10), 'w', encoding='utf-8') as fp:
                 for line in intro:
                     fp.write("%s\n" % line)
@@ -447,14 +448,3 @@ def groupStrings (lala):
             if lala[ref-1-index] in line:
                 del lala[ref-1-index]
     return groups
-    
-a = ['Oidio', 'Peronospora', 'Escoriosi', 'Antracnosi', 'Marciume nero']
-
-
-
-
-
-
-
-
-

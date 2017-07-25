@@ -104,3 +104,10 @@
 2017/07/20 heliocuivre s 10.00 l
 2017/07/20 ksc physio h 7.50 kg
 2017/07/20 shelter 4.00 kg
+2017/07/25 grifon più wg -13.34 kg <-prosecco
+2017/07/25 tiolene -8.00 l <-prosecco
+2017/07/25 shelter -4.00 kg
+2017/07/25 thiocur forte -1.25 l <-pinot
+2017/07/25 thiocur forte -2.09 l <-prosecco
+2017/07/25 heliocuivre s -2.49 l <-pinot
+2017/07/25 heliocuivre s -4.13 l <-prosecco

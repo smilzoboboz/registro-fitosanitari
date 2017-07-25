@@ -2,7 +2,9 @@
 # prodotti.py
 
 
-from tools import ProductException
+import shutil
+
+from tools import readDate, unitConversion, ProductException, color
 
 
 data = {}
@@ -171,11 +173,11 @@ def show (mode='complete'):
             if len(data[entry]['obiettivo']) > (columns - 48):
                 obiettivo = data[entry]['obiettivo'][:columns - 48 - 4] + "..."
             else:
-                obiettivo = data[entry]['obiettivo']
+                obiettivo = ','.join(data[entry]['obiettivo'])
             print("%s%s%s%.2f-%.2f %s/ha %sgg%s %s" % (
                 color.CYAN, entry.upper().ljust(20), color.END, 
                 float(data[entry]['minmax'][0]), float(data[entry]['minmax'][1]),
                 data[entry]['unit'].rjust(2),
-                data[entry]['carenza'].rjust(6), num,
+                str(data[entry]['carenza']).rjust(6), num,
                 obiettivo,
             ))

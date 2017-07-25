@@ -64,16 +64,16 @@ def cliHandler (args):
                 print("prodotti HELP")
             elif len(args) > 2:
                 if args[2] in ['corto', 'compatto']:
-                    database.show('short')
+                    products.show('short')
                 else:
                     print("specific balances")
             else:
-                database.show()
+                products.show()
         elif args[1].lower() in ['prodotto']:
             if len(args) == 3 and args[2].lower() in helpArguments:
                 print("inserimento HELP")
             else:
-                database.write(' '.join(args[2:]))
+                products.write(' '.join(args[2:]))
                 
 
 products.read()
