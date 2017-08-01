@@ -111,3 +111,5 @@
 2017/07/25 thiocur forte -2.09 l <-prosecco
 2017/07/25 heliocuivre s -2.49 l <-pinot
 2017/07/25 heliocuivre s -4.13 l <-prosecco
+2017/07/26 heliocuivre s -3.38 l <-prosecco # ripetizione trattamento causa dilavamento
+2017/07/26 thiocur forte -1.66 l <-prosecco
