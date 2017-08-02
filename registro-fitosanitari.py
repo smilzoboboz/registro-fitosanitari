@@ -17,7 +17,6 @@ def cliHandler (args):
     elif len(args) > 1:
         # parse --quiet option
         for index in list(range(len(args[2:]))):
-            print(args)
             if args[index+2] == '--quiet':
                 del args[index+2]
                 pquiet = True

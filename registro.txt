@@ -97,7 +97,7 @@
 2017/06/01 vector -3.00 l
 2017/06/01 ridomil gold combi pepite -16.00 kg
 2017/06/01 thiocur forte -10.00 l
-2017/06/09 kumulus tecno -21.00 kg  # Identificato come "zolfo" nelle dosi di pompaggio
+2017/06/09 kumulus tecno -21.00 kg
 2017/07/18 switch -0.80 kg <-pinot
 2017/07/18 switch -0.20 kg <-prosecco
 2017/07/13 basta 200 -5.00 l
@@ -113,3 +113,9 @@
 2017/07/25 heliocuivre s -4.13 l <-prosecco
 2017/07/26 heliocuivre s -3.38 l <-prosecco # ripetizione trattamento causa dilavamento
 2017/07/26 thiocur forte -1.66 l <-prosecco
+2017/08/01 poltiglia disperss 90.00 kg
+2017/08/01 kumulus tecno 50.00 kg
+2017/08/02 poltiglia disperss -47.69 kg
+2017/08/02 kumulus tecno -24.00 kg
+2017/07/25 ksc physio h -4.50 kg
+2017/08/02 ksc physio h -3.00 kg

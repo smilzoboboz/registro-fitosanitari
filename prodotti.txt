@@ -229,3 +229,158 @@ Heliocuivre S
     num: 0
     obiettivo: Peronospora
     note: 
+
+Poltiglia Disperss
+    min-max: 4.00-6.00 kg/ha
+    carenza: 5gg
+    num: 0
+    obiettivo: Peronospora, Botrite, Marciume Acido
+    note: Dosaggio massimo 800 g/hl in caso di forte pressione della malattia
+
+Roundup Platinum
+    min-max: 1.00-3.00 l/ha
+    carenza: 0gg
+    num: 0
+    obiettivo: Erbicida
+    note: 
+
+Most Micro
+    min-max: 2.50-3.00 l/ha
+    carenza: 0gg
+    num: 0
+    obiettivo: Erbicida
+    note: 
+
+Dithane DG Neotec
+    min-max: 2.00 kg/ha
+    carenza: 28gg
+    num: 6
+    obiettivo: Peronospora, Escoriosi, Marciume nero, Rossore parassitario, Antracnosi
+    note: 
+
+Tiovit Jet
+    min-max: 2.00-4.00 kg/ha
+    carenza: 5gg
+    num: 0
+    obiettivo: Oidio
+    note: 
+
+Acrobat MZ WG
+    min-max: 2.50 kg/ha
+    carenza: 28gg
+    num: 0
+    obiettivo: Peronospora
+    note: 
+
+Fungiman Combi
+    min-max: 2.00-3.00 kg/ha
+    carenza: 28gg
+    num: 0
+    obiettivo: Peronospora
+    note: 
+
+Intrepid
+    min-max: 0.12-0.40 l/ha
+    carenza: 0gg
+    num: 3
+    obiettivo: Lepidotteri
+    note: 
+
+Pergado F
+    min-max: 2.00-2.50 kg/ha
+    carenza: 28gg
+    num: 3
+    obiettivo: Peronospora
+    note: 
+
+Flare Gold Combi Pepite
+    min-max: 2.00 kg/ha
+    carenza: 28gg
+    num: 3
+    obiettivo: Peronospora
+    note: 
+
+Cantus
+    min-max: 1.00-1.20 kg/ha
+    carenza: 28gg
+    num: 1
+    obiettivo: Botrite, Oidio
+    note: 
+
+Enovit Metil
+    min-max: 2.20 l/ha
+    carenza: 35gg
+    obiettivo: Marciume Grigio, Oidio
+    num: 1
+    note: 
+
+Arius System Plus
+    min-max: 1.25 l/ha
+    carenza: 28gg
+    obiettivo: Oidio, Marciume nero
+    num: 4
+    note: 
+
+Rifle 44
+    min-max: 2.00-3.00 kg/ha
+    carenza: 28gg
+    obiettivo: Peronospora, Escoriosi
+    num: 0
+    note: 
+
+Cumeta Flow
+    min-max: 4.00 l/ha
+    carenza: 20gg
+    obiettivo: Peronospora
+    num: 4
+    note: 
+
+Aviator SC
+    min-max: 0.40-0.50 l/ha
+    carenza: 10gg
+    obiettivo: Peronospora
+    num: 0
+    note: 
+
+Scala
+    min-max: 2.00 l/ha
+    carenza: 21gg
+    obiettivo: Muffa grigia, Marciumi secondari
+    num: 3
+    note: 
+
+ACTARA 25 WG
+    min-max: 0.20 kg/ha
+    carenza: 21gg
+    obiettivo: Cicaline, Cocciniglie
+    num: 0
+    note: 
+
+PERGADO SC
+    min-max: 0.6 l/ha
+    carenza: 21gg
+    obiettivo: Peronospora
+    num: 4
+    note: 
+
+Dursban 75 WG
+    min-max: 0.55-0.96 kg/ha
+    carenza: 1gg
+    obiettivo: Cocciniglie, Tignole, Cicaline
+    num: 2
+    note: 
+
+Teldor Plus
+    min-max: 0.10-0.15 l/ha
+    carenza: 7gg
+    obiettivo: Botrite
+    num: 0
+    note: 
+
+King 360 HP
+    min-max: 2.00-2.50 l/ha
+    carenza: 5gg
+    obiettivo: Peronospora, Marciume nero
+    num: 0
+    note: 
+

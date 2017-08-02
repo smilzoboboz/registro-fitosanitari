@@ -273,6 +273,7 @@ def getNum (product, area, date, offset=0):
 
 
 def getRemaining (product, date=datetime.datetime.today(), offset=0):
+    unit = None
     if len(list(data)) == 0:
         readSource()
     counter = offset
@@ -280,8 +281,10 @@ def getRemaining (product, date=datetime.datetime.today(), offset=0):
         if (data[item]['name'] == product.lower() and 
             date >= data[item]['date']):
             counter += data[item]['qty']
-            index = item
-    return (counter, data[index]['unit'])
+            unit = data[item]['unit']
+    if not unit:
+        unit = 'A'  # this doesn't actually matter since it means the product was never bought before
+    return (counter, unit)
 
 
 def read (mode='reg', search="", file='registro.txt', report=False):
