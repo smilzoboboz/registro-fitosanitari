@@ -1,121 +1,128 @@
-2017/07/12 grifon più wg 20.00 kg
-2017/07/12 soleil 50 wg 4.00 kg
-2017/07/12 tiolene 20.00 l
-2017/07/12 basta 200 5.00 l
-2017/07/17 grifon più wg -2.50 kg <-pinot
-2017/07/17 grifon più wg -4.16 kg <-prosecco
-2017/07/17 tiolene -12.00 l
-2017/07/17 soleil 50 wg -4.00 kg
-2017/07/17 foliane 80 wg -8.00 kg <-prosecco
-2017/06/08 foliane 80 wg 20.00 kg
-2017/06/08 prevint top 20.00 kg
-2017/06/08 zoxium 240 sc 6.00 l
-2017/06/14 prevint top 20.00 kg
-2017/06/14 foliane 80 wg 20.00 kg
-2017/06/14 tiogold disperss 24.00 kg
-2017/06/14 applaud plus 8.00 kg
-2017/06/16 applaud plus 3.00 kg
-2017/06/21 zoxium 240 sc 6.00 l
-2017/06/21 cyprus 25 df 20.00 kg
-2017/06/21 crittovit wg 20.00 kg
-2017/06/21 vivando 2.00 l
-2017/06/27 mildicut 30.00 l
-2017/06/27 dynali 5.00 l
-2017/06/28 shelter 4.00 kg
-2017/07/06 tepeta combi 30.00 kg
-2017/07/06 sphinx sc 4.00 l
-2017/07/06 sponsor 1.50 l
-2017/07/17 switch 1.00 kg
-2017/07/07 tepeta combi -24.00 kg
-2017/07/07 sphinx sc -4.00 l
-2017/07/07 sponsor -1.50 l
-2017/06/30 mildicut -30.00 l
-2017/06/30 shelter -4.00 kg
-2017/06/30 dynali -5.00 l
-2017/06/23 zoxium 240 sc -6.00 l
-2017/06/23 cyprus 25 df -20.00 kg
-2017/06/23 crittovit wg -20.00 kg
-2017/06/23 vivando -2.00 l
-2017/06/16 prevint top -20.00 kg
-2017/06/16 foliane 80 wg -16.00 kg
-2017/06/16 tiogold disperss -24.00 kg
-2017/06/16 applaud plus -11.00 kg
-2017/06/09 zoxium 240 sc -6.00 l
-2017/06/09 foliane 80 wg -12.00 kg
-2017/06/09 prevint top -20.00 kg
-2017/05/23 fertiactyl radical 20.00 l
-2017/05/23 ksc physio h 7.50 kg
-2017/05/23 vector 5.00 l
-2017/05/18 folpec 50 sc 20.00 l
-2017/05/18 tiogold disperss 25.00 kg
-2017/05/17 thiocur forte 25.00 l
-2017/03/14 patriot dry 8.00 kg
-2017/03/14 goal 480 sc 4.00 l
-2017/04/06 penncozeb dg 20.00 kg
-2017/04/06 tiogold disperss 25.00 kg
-2017/04/14 kumulus tecno 25.00 kg
-2017/04/14 ksc physio h 7.50 kg
-2017/04/19 kumulus tecno 25.00 kg
-2017/04/19 vondozeb dg 40.00 kg
-2017/04/27 sphinx sc 3.00 l
-2017/04/27 basfoliar aktiv 20.00 l
-2017/04/28 vector 5.00 l
-2017/05/04 prevint top 10.00 kg
-2017/05/04 shelter 3.00 kg
-2017/05/04 folpec 50 sc 20.00 l
-2017/05/04 kumulus tecno 25.00 kg
-2017/05/11 ridomil gold combi pepite 50.00 kg
-2017/05/11 thiocur forte 10.00 l
-2017/05/11 coragen 0.30 l
-2017/03/17 patriot dry -8.00 kg
-2017/03/18 goal 480 sc -4.00 l
-2017/04/07 penncozeb dg -10.00 kg
-2017/04/07 tiogold disperss -12.50 kg
-2017/04/14 penncozeb dg -10.00 kg
-2017/04/14 tiogold disperss -12.50 kg
-2017/04/21 kumulus tecno -18.00 kg
-2017/04/21 vondozeb dg -15.00 kg
-2017/04/21 sphinx sc -3.00 l
-2017/04/29 kumulus tecno -18.00 kg
-2017/04/29 vondozeb dg -15.00 kg
-2017/04/29 sphinx sc -3.00 l
-2017/04/29 vector -3.00 l
-2017/05/04 kumulus tecno -18.00 kg
-2017/05/04 folpec 50 sc -12.00 l
-2017/05/04 shelter -3.00 kg
-2017/05/08 vondozeb dg -10.00 kg
-2017/05/08 prevint top -6.50 kg
-2017/05/13 vector -2.00 l
-2017/05/13 ridomil gold combi pepite -16.00 kg
-2017/05/13 thiocur forte -10.00 l
-2017/05/18 tiogold disperss -32.00 kg
-2017/05/18 folpec 50 sc -16.00 l
-2017/05/18 coragen -0.15 l
-2017/05/25 vector -3.00 l
-2017/05/25 ridomil gold combi pepite -16.00 kg
-2017/05/25 thiocur forte -10.00 l
-2017/06/01 vector -3.00 l
-2017/06/01 ridomil gold combi pepite -16.00 kg
-2017/06/01 thiocur forte -10.00 l
-2017/06/09 kumulus tecno -21.00 kg
-2017/07/18 switch -0.80 kg <-pinot
-2017/07/18 switch -0.20 kg <-prosecco
-2017/07/13 basta 200 -5.00 l
-2017/07/20 heliocuivre s 10.00 l
-2017/07/20 ksc physio h 7.50 kg
-2017/07/20 shelter 4.00 kg
-2017/07/25 grifon più wg -13.34 kg <-prosecco
-2017/07/25 tiolene -8.00 l <-prosecco
-2017/07/25 shelter -4.00 kg
-2017/07/25 thiocur forte -1.25 l <-pinot
-2017/07/25 thiocur forte -2.09 l <-prosecco
-2017/07/25 heliocuivre s -2.49 l <-pinot
-2017/07/25 heliocuivre s -4.13 l <-prosecco
-2017/07/26 heliocuivre s -3.38 l <-prosecco # ripetizione trattamento causa dilavamento
-2017/07/26 thiocur forte -1.66 l <-prosecco
-2017/08/01 poltiglia disperss 90.00 kg
-2017/08/01 kumulus tecno 50.00 kg
-2017/08/02 poltiglia disperss -47.69 kg
-2017/08/02 kumulus tecno -24.00 kg
-2017/07/25 ksc physio h -4.50 kg
-2017/08/02 ksc physio h -3.00 kg
+2016/03/21 roundup platinum 15.00 l
+2016/03/21 most micro 9.00 l
+2016/03/21 patriot dry 8.00 kg
+2016/03/31 dithane dg neotec 20.00 kg
+2016/04/13 tiovit jet 25.00 kg
+2016/04/13 acrobat mz wg 20.00 kg
+2016/04/20 tiovit jet 25.00 kg
+2016/04/27 fungiman combi 20.00 kg
+2016/05/06 tiovit jet 25.00 kg
+2016/05/06 intrepid 1.00 l
+2016/05/06 pergado f 10.00 kg
+2016/05/12 flare gold combi pepite 15.00 kg
+2016/05/12 soleil 50 wg 4.00 kg
+2016/05/12 cantus 7.00 kg
+2016/05/12 enovit metil 2.00 l
+2016/05/14 flare gold combi pepite 5.00 kg
+2016/05/14 cantus 3.00 kg
+2016/05/14 soleil 50 wg 1.50 kg
+2016/05/18 flare gold combi pepite 15.00 kg
+2016/05/18 arius system plus 8.00 l
+2016/05/26 foliane 80 wg 20.00 kg
+2016/05/26 flare gold combi pepite 15.00 kg
+2016/05/26 arius system plus 8.00 l
+2016/05/30 rifle 44 20.00 kg
+2016/05/30 tiovit jet 25.00 kg
+2016/05/30 vector 5.00 l
+2016/06/01 basta 200 15.00 l
+2016/06/01 vector 1.00 l
+2016/06/09 tiovit jet 25.00 kg
+2016/06/09 soleil 50 wg 4.00 kg
+2016/06/09 folpec 50 sc 20.00 l
+2016/06/09 vector 5.00 l
+2016/06/14 cumeta flow 40.00 l
+2016/06/14 aviator sc 4.00 l
+2016/06/14 vector 5.00 l
+2016/06/14 tiovit jet 50.00 kg
+2016/06/17 scala 2.00 l
+2016/06/22 soleil 50 wg 4.00 kg
+2016/06/22 tiovit jet 25.00 kg
+2016/06/22 prevint top 20.00 kg
+2016/06/28 tiovit jet 25.00 kg
+2016/06/28 actara 25 wg 1.50 kg
+2016/06/28 prevint top 20.00 kg
+2016/06/28 pergado sc 4.50 l
+2016/07/05 fungiman combi 20.00 kg
+2016/07/05 tiovit jet 50.00 kg
+2016/07/05 dursban 75 wg 5.00 kg
+2016/07/13 cyprus 25 df 20.00 kg
+2016/07/13 folpec 50 sc 20.00 l
+2016/07/13 tiovit jet 75.00 kg
+2016/07/13 teldor plus 1.00 l
+2016/07/21 king 360 hp 20.00 l
+2016/07/27 tiovit jet 50.00 kg
+2016/07/27 king 360 hp 20.00 l
+2016/08/03 king 360 hp 20.00 l
+2016/08/03 tiogold disperss 100.00 kg
+2016/08/03 cyprus 25 df 20.00 kg
+2016/08/04 king 360 hp 20.00 l
+2016/08/05 teldor plus 1.00 l
+2016/08/25 cyprus 25 df 20.00 kg
+2016/03/06 patriot dry -8.00 kg
+2016/04/01 dithane dg neotec -10.00 kg
+2016/04/07 dithane dg neotec -10.00 kg
+2016/04/15 tiovit jet -14.00 kg
+2016/04/15 acrobat mz wg -9.00 kg
+2016/04/22 tiovit jet -15.00 kg
+2016/04/22 acrobat mz wg -11.00 kg
+2016/04/29 tiovit jet -15.00 kg
+2016/04/29 fungiman combi -9.00 kg
+2016/05/06 tiovit jet -20.00 kg
+2016/05/06 pergado f -10.00 kg
+2016/05/06 intrepid -0.40 l
+2016/05/13 flare gold combi pepite -15.00 kg
+2016/05/13 soleil 50 wg -4.00 kg
+2016/05/13 cantus -7.00 kg
+2016/05/13 enovit metil -2.00 l
+2016/05/14 flare gold combi pepite -5.00 kg <-prosecco
+2016/05/14 soleil 50 wg -1.50 kg <-prosecco
+2016/05/14 cantus -3.00 kg <-prosecco
+2016/05/20 flare gold combi pepite -15.00 kg
+2016/05/20 arius system plus -8.00 l
+2016/05/31 rifle 44 -20.00 kg
+2016/05/31 tiovit jet -31.00 kg
+2016/05/31 vector -5.00 l
+2016/06/06 flare gold combi pepite -15.00 kg
+2016/06/06 arius system plus -8.00 l
+2016/06/10 tiovit jet -31.00 kg
+2016/06/10 soleil 50 wg -4.00 kg
+2016/06/10 folpec 50 sc -16.00 l
+2016/06/10 vector -5.00 l
+2016/06/15 cumeta flow -32.00 l
+2016/06/15 aviator sc -4.00 l
+2016/06/15 tiovit jet -33.00 kg
+2016/06/15 vector -4.00 l
+2016/06/22 scala -2.00 l
+2016/06/23 tiovit jet -33.00 kg
+2016/06/23 soleil 50 wg -4.00 kg
+2016/06/23 prevint top -20.00 kg
+2016/06/30 tiovit jet -33.00 kg
+2016/06/30 actara 25 wg -1.60 kg
+2016/06/30 prevint top -20.00 kg
+2016/06/30 pergado sc -4.50 l
+2016/07/07 tiovit jet -33.00 kg
+2016/07/07 foliane 80 wg -12.00 kg
+2016/07/07 fungiman combi -24.00 kg
+2016/07/07 dursban 75 wg -5.00 kg
+2016/07/14 tiovit jet -33.00 kg
+2016/07/14 cyprus 25 df -20.00 kg
+2016/07/14 folpec 50 sc -14.00 l
+2016/07/14 teldor plus -1.00 l
+2016/07/22 tiovit jet -36.00 kg
+2016/07/22 foliane 80 wg -8.00 kg
+2016/07/22 folpec 50 sc -5.00 l
+2016/07/22 king 360 hp -20.00 l
+2016/07/29 king 360 hp -20.00 l
+2016/07/29 tiovit jet -36.00 kg
+2016/08/06 tiovit jet -37.00 kg
+2016/08/06 cyprus 25 df -20.00 kg
+2016/08/13 tiogold disperss -39.00 kg
+2016/08/13 king 360 hp -20.00 l
+2016/08/13 teldor plus -1.00 l
+2016/08/20 tiogold disperss -39.00 kg
+2016/08/20 king 360 hp -20.00 l
+2016/08/26 cyprus 25 df -20.00 kg <-prosecco
+2016/08/26 tiogold disperss -22.00 kg <-prosecco
+2016/03/24 roundup platinum -15.00 l
+2016/05/16 basta 200 -7.50 l
+2016/07/20 basta 200 -7.50 l
