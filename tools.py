@@ -4,10 +4,11 @@
 
 import sys
 import datetime
+import os
 
-import colorama
-
-colorama.init()
+if os.name is not "posix":
+    import colorama
+    colorama.init()
 
 class color:
    PURPLE = '\033[95m'
