@@ -1,3 +1,4 @@
+2016/01/01 flare gold combi pepite 2.00 kg
 2016/03/21 roundup platinum 15.00 l
 2016/03/21 most micro 9.00 l
 2016/03/21 patriot dry 8.00 kg
@@ -84,20 +85,20 @@
 2016/05/31 vector -5.00 l
 2016/06/06 flare gold combi pepite -15.00 kg
 2016/06/06 arius system plus -8.00 l
-2016/06/10 tiovit jet -31.00 kg
+2016/06/10 tiovit jet -30.00 kg
 2016/06/10 soleil 50 wg -4.00 kg
 2016/06/10 folpec 50 sc -16.00 l
 2016/06/10 vector -5.00 l
 2016/06/15 cumeta flow -32.00 l
 2016/06/15 aviator sc -4.00 l
-2016/06/15 tiovit jet -33.00 kg
+2016/06/15 tiovit jet -34.00 kg
 2016/06/15 vector -4.00 l
 2016/06/22 scala -2.00 l
 2016/06/23 tiovit jet -33.00 kg
 2016/06/23 soleil 50 wg -4.00 kg
 2016/06/23 prevint top -20.00 kg
 2016/06/30 tiovit jet -33.00 kg
-2016/06/30 actara 25 wg -1.60 kg
+2016/06/30 actara 25 wg -1.50 kg
 2016/06/30 prevint top -20.00 kg
 2016/06/30 pergado sc -4.50 l
 2016/07/07 tiovit jet -33.00 kg
@@ -124,5 +125,6 @@
 2016/08/26 cyprus 25 df -20.00 kg <-prosecco
 2016/08/26 tiogold disperss -22.00 kg <-prosecco
 2016/03/24 roundup platinum -15.00 l
-2016/05/16 basta 200 -7.50 l
+2016/03/24 most micro -9.00 l
+2016/06/02 basta 200 -7.50 l
 2016/07/20 basta 200 -7.50 l

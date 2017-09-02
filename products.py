@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # prodotti.py
 
 
@@ -8,7 +9,7 @@ from tools import readDate, unitConversion, ProductException, color
 
 
 data = {}
-areas = {'prosecco': 6.9540, 'pinot': 0.9946,}
+areas = {'prosecco': 6.9568, 'pinot': 0.9946,}
 
 
 class validate ():

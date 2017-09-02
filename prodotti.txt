@@ -129,7 +129,7 @@ Switch
     min-max: 0.80 kg/ha
     carenza: 21gg
     num: 2
-    obiettivo: Muffa grigia, Marciumi secondari del grappolo
+    obiettivo: Muffa grigia, Marciumi secondari
     note: 1 trattamento in pre-chiusura grappolo e 1 trattamento all’invaiatura o in pre-raccolta. Effettuare un massimo di 2 interventi.
 
 Fertiactyl Radical
@@ -147,7 +147,7 @@ KSC Physio H
     note: Aggiungere sempre il pHysio H nell’acqua, mai l’acqua nel pHysio H. Aggiungere possibilmente pHysio H nella botte mezza piena d’acqua, poi aggiungere gli altri formulati come consuetudine.
 
 Vector
-    min-max: 0.40-1.00 l/ha
+    min-max: 0.40-0.50 l/ha
     carenza: 0gg
     num: 0
     obiettivo: Patogeni funghini, Insetti, Infestanti
@@ -224,7 +224,7 @@ Coragen
     note: 
 
 Heliocuivre S
-    min-max: 1.40-3.00 l/ha
+    min-max: 2.25-3.00 l/ha
     carenza: 20gg
     num: 0
     obiettivo: Peronospora
@@ -384,3 +384,93 @@ King 360 HP
     num: 0
     note: 
 
+Enervin SC
+    min-max: 1.50 l/ha
+    carenza: 21gg
+    obiettivo: Peronospora
+    num: 0
+    note: Parte del prodotto Enervin Pro per uso combinato.
+
+LBG 01F34
+    min-max: 2.00 l/ha
+    carenza: 21gg
+    obiettivo: Peronospora
+    num: 0
+    note: Parte del prodotto Enervin Pro per uso combinato.
+
+Luzindo
+    min-max: 0.20 kg/ha
+    carenza: 30gg
+    obiettivo: Cicaline, Tignole
+    num: 0
+    note: 
+
+Microthiol Disperss
+    min-max: 2.00-4.00 kg/ha
+    carenza: 5gg
+    obiettivo: Oidio
+    num: 0
+    note: La dose può aumentare a 800 g/hl in situazioni mediamente gravi o 1200 g/hl in caso di forte pressione della malattia.
+
+Silbot 500 SC
+    min-max: 0.40-0.50 l/ha
+    carenza: 10gg
+    obiettivo: Peronospora
+    num: 4
+    note: Non effettuare più di 3 trattamenti consecutivi.
+
+Filan WG
+    min-max: 1.00-1.20 kg/ha
+    carenza: 28gg
+    obiettivo: Botrite, Oidio
+    num: 1
+    note: 
+
+Stomp Aqua
+    min-max: 2.00-2.50 l/ha
+    carenza: 100gg
+    obiettivo: Erbicida
+    num: 0
+    note: 
+
+Remedier
+    min-max: 2.50 kg/ha
+    carenza: 3gg
+    obiettivo: Mal dell’esca
+    num: 0
+    note: 
+
+Faltex Flow
+    min-max: 2.00-3.20 l/ha
+    carenza: 28gg
+    obiettivo: Escoriosi, Marciume bianco, Peronospora, Oidio, Muffa grigia, Marciume nero
+    num: 0
+    note: 
+
+Quasar 6-24 R
+    min-max: 3.50 kg/ha
+    carenza: 10gg
+    obiettivo: Peronospora
+    num: 5
+    note: 
+
+Copperland
+    min-max: 2.00-2.80 kg/ha
+    carenza: 21gg
+    obiettivo: Peronospora, Escoriosi, Marciume nero
+    num: 6
+    note: 
+
+Iperion
+    min-max: 2.00-3.00 kg/ha
+    carenza: 20gg
+    obiettivo: Peronospora, Escoriosi, Marciume nero, Rossore parassitario, Melanosi
+    num: 0
+    note: 
+
+Quasar R FLOW
+    min-max: 3.50 l/ha
+    carenza: 10gg
+    obiettivo: Peronospora
+    num: 5
+    note: 

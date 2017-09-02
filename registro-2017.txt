@@ -1,3 +1,8 @@
+2017/01/01 cumeta flow 8.00 l
+2017/01/01 folpec 50 sc 5.00 l
+2017/01/01 vector 2.00 l
+2017/01/01 fungiman combi 7.00 kg
+2017/01/01 intrepid 0.60 l
 2017/07/12 grifon più wg 20.00 kg
 2017/07/12 soleil 50 wg 4.00 kg
 2017/07/12 tiolene 20.00 l

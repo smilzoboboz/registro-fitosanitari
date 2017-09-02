@@ -18,3 +18,76 @@
 2015/06/11 flare gold combi pepite 15.00 kg
 2015/06/11 thiocur forte 10.00 l
 2015/06/11 microthiol disperss 25.00 kg
+2015/06/18 enervin sc 12.00 l
+2015/06/18 lbg 01f34 16.00 l
+2015/06/18 luzindo 2.00 kg
+2015/06/18 pergado sc 4.00 l
+2015/06/18 microthiol disperss 25.00 kg
+2015/06/19 microthiol disperss 25.00 kg
+2015/06/23 mildicut 30.00 l
+2015/07/01 mildicut 30.00 l
+2015/07/01 faltex flow 15.00 l
+2015/07/01 microthiol disperss 25.00 kg
+2015/07/06 mildicut 30.00 l
+2015/07/06 microthiol disperss 50.00 kg
+2015/07/06 faltex flow 15.00 l
+2015/07/15 quasar 6-24 r 30.00 kg
+2015/07/15 microthiol disperss 25.00 kg
+2015/07/15 switch 1.00 kg
+2015/07/23 copperland 50.00 kg
+2015/07/23 microthiol disperss 75.00 kg
+2015/08/25 iperion 20.00 kg
+2015/09/17 quasar r flow 2.00 l
+2015/03/28 remedier -8.00 kg
+2015/05/06 tiolene -11.70 l
+2015/05/06 faltex flow -13.00 l
+2015/05/06 silbot 500 sc -4.00 l
+2015/05/14 tiolene -11.70 l
+2015/05/14 faltex flow -15.50 l
+2015/05/14 silbot 500 sc -4.00 l
+2015/05/24 tiolene -11.70 l
+2015/05/24 faltex flow -15.50 l
+2015/05/24 aviator sc -4.00 l
+2015/05/28 flare gold combi pepite -16.00 kg
+2015/05/28 thiocur forte -10.00 l
+2015/06/05 flare gold combi pepite -16.00 kg
+2015/06/05 thiocur forte -10.00 l
+2015/06/05 microthiol disperss -25.00 kg
+2015/06/05 filan wg -1.00 kg <-pinot
+2015/06/13 flare gold combi pepite -16.00 kg
+2015/06/13 thiocur forte -10.00 l
+2015/06/13 microthiol disperss -25.00 kg
+2015/06/19 enervin sc -12.00 l
+2015/06/19 lbg 01f34 -16.00 l
+2015/06/19 pergado sc -4.00 l
+2015/06/19 microthiol disperss -25.00 kg
+2015/06/19 luzindo -2.00 kg
+2015/06/25 mildicut -30.00 l
+2015/06/25 faltex flow -15.40 l
+2015/06/25 microthiol disperss -25.00 kg
+2015/06/25 tiolene -4.90 l
+2015/07/02 mildicut -30.00 l
+2015/07/02 faltex flow -15.30 l
+2015/07/02 microthiol disperss -25.00 kg
+2015/07/09 mildicut -30.00 l
+2015/07/09 faltex flow -15.30 l
+2015/07/09 microthiol disperss -29.00 kg
+2015/07/17 quasar 6-24 r -27.00 kg
+2015/07/17 microthiol disperss -29.00 kg
+2015/07/18 switch -0.80 kg <-pinot
+2015/07/18 switch -0.20 kg <-prosecco  #superficie trattata =0,2554
+2015/07/18 quasar 6-24 r -3.00 kg <-prosecco  #ripetizione trattamento per dilavamento causato da irrigazione attigua
+2015/07/18 microthiol disperss -4.00 kg <-prosecco  #ripetizione trattamento per dilavamento causato da irrigazione attigua
+2015/07/24 microthiol disperss -37.00 kg
+2015/07/24 copperland -22.30 kg
+2015/07/31 microthiol disperss -37.00 kg
+2015/07/31 copperland -22.30 kg
+2015/08/27 iperion -2.50 kg <-pinot  #trattamento post vendemmia meccanica per disinfettare i tralci
+2015/08/27 microthiol disperss -14.00 kg <-prosecco
+2015/09/10 iperion -17.50 kg <-prosecco  #trattamento post vendemmia meccanica per disinfettare i tralci
+2015/09/19 copperland -5.40 kg <-prosecco  #superficie trattata =~2,300
+2015/09/19 quasar r flow -2.00 l <-prosecco  #vigna nuovo impianto, superficie trattata =0,1562 + 0,4152
+2015/03/28 stomp aqua -7.00 l
+2015/03/28 roundup platinum -15.00 l
+2015/05/16 basta 200 -15.00 l
+2015/07/06 basta 200 -15.00 l
