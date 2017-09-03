@@ -117,13 +117,13 @@
 2016/07/29 tiovit jet -36.00 kg
 2016/08/06 tiovit jet -37.00 kg
 2016/08/06 cyprus 25 df -20.00 kg
-2016/08/13 tiogold disperss -39.00 kg
+2016/08/13 tiogold disperss -37.00 kg
 2016/08/13 king 360 hp -20.00 l
 2016/08/13 teldor plus -1.00 l
-2016/08/20 tiogold disperss -39.00 kg
+2016/08/20 tiogold disperss -37.00 kg
 2016/08/20 king 360 hp -20.00 l
 2016/08/26 cyprus 25 df -20.00 kg <-prosecco
-2016/08/26 tiogold disperss -22.00 kg <-prosecco
+2016/08/26 tiogold disperss -26.00 kg <-prosecco
 2016/03/24 roundup platinum -15.00 l
 2016/03/24 most micro -9.00 l
 2016/06/02 basta 200 -7.50 l
