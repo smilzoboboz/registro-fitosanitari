@@ -75,18 +75,18 @@
 2015/07/17 quasar 6-24 r -27.00 kg
 2015/07/17 microthiol disperss -29.00 kg
 2015/07/18 switch -0.80 kg <-pinot
-2015/07/18 switch -0.20 kg <-prosecco  #superficie trattata =0,2554
-2015/07/18 quasar 6-24 r -3.00 kg <-prosecco  #ripetizione trattamento per dilavamento causato da irrigazione attigua
-2015/07/18 microthiol disperss -4.00 kg <-prosecco  #ripetizione trattamento per dilavamento causato da irrigazione attigua
+2015/07/18 switch -0.20 kg <-prosecco
+2015/07/18 quasar 6-24 r -3.00 kg <-prosecco  #Ripetizione trattamento per dilavamento causato da irrigazione attigua
+2015/07/18 microthiol disperss -4.00 kg <-prosecco
 2015/07/24 microthiol disperss -37.00 kg
 2015/07/24 copperland -22.30 kg
 2015/07/31 microthiol disperss -37.00 kg
 2015/07/31 copperland -22.30 kg
-2015/08/27 iperion -2.50 kg <-pinot  #trattamento post vendemmia meccanica per disinfettare i tralci
+2015/08/27 iperion -2.50 kg <-pinot  #Trattamento post vendemmia meccanica per disinfettare i tralci
 2015/08/27 microthiol disperss -14.00 kg <-prosecco
-2015/09/10 iperion -17.50 kg <-prosecco  #trattamento post vendemmia meccanica per disinfettare i tralci
-2015/09/19 copperland -5.40 kg <-prosecco  #superficie trattata =~2,300
-2015/09/19 quasar r flow -2.00 l <-prosecco  #vigna nuovo impianto, superficie trattata =0,1562 + 0,4152
+2015/09/10 iperion -17.50 kg <-prosecco  #Trattamento post vendemmia meccanica per disinfettare i tralci
+2015/09/19 copperland -5.40 kg <-prosecco  #Trattamento su nuovo impianto (0,1562 ha) e limitrofe (2,700 ha)
+2015/09/19 quasar r flow -2.00 l <-prosecco
 2015/03/28 stomp aqua -7.00 l
 2015/03/28 roundup platinum -15.00 l
 2015/05/16 basta 200 -15.00 l

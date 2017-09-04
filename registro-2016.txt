@@ -70,12 +70,12 @@
 2016/04/29 fungiman combi -9.00 kg
 2016/05/06 tiovit jet -20.00 kg
 2016/05/06 pergado f -10.00 kg
-2016/05/06 intrepid -0.40 l
+2016/05/06 intrepid -0.40 l <-pinot
 2016/05/13 flare gold combi pepite -15.00 kg
 2016/05/13 soleil 50 wg -4.00 kg
-2016/05/13 cantus -7.00 kg
-2016/05/13 enovit metil -2.00 l
-2016/05/14 flare gold combi pepite -5.00 kg <-prosecco
+2016/05/13 cantus -7.00 kg <-prosecco
+2016/05/13 enovit metil -2.00 l <-pinot
+2016/05/14 flare gold combi pepite -5.00 kg <-prosecco  #Ripetizione parziale del trattamento precedente causa dilavamento
 2016/05/14 soleil 50 wg -1.50 kg <-prosecco
 2016/05/14 cantus -2.40 kg <-prosecco
 2016/05/20 flare gold combi pepite -15.00 kg
@@ -85,15 +85,15 @@
 2016/05/31 vector -3.67 l
 2016/06/06 flare gold combi pepite -15.00 kg
 2016/06/06 arius system plus -8.00 l
-2016/06/10 tiovit jet -30.00 kg
+2016/06/10 tiovit jet -30.00 kg  #Trattamento anticipato per forte piovosità
 2016/06/10 soleil 50 wg -4.00 kg
 2016/06/10 folpec 50 sc -16.00 l
 2016/06/10 vector -3.67 l
-2016/06/15 cumeta flow -32.00 l
+2016/06/15 cumeta flow -32.00 l  #Trattamento anticipato per forte piovosità
 2016/06/15 aviator sc -4.00 l
 2016/06/15 tiovit jet -34.00 kg
 2016/06/15 vector -3.67 l
-2016/06/22 scala -2.00 l
+2016/06/22 scala -2.00 l <-pinot
 2016/06/23 tiovit jet -33.00 kg
 2016/06/23 soleil 50 wg -4.00 kg
 2016/06/23 prevint top -20.00 kg
@@ -109,18 +109,18 @@
 2016/07/14 cyprus 25 df -20.00 kg
 2016/07/14 folpec 50 sc -14.00 l
 2016/07/14 teldor plus -1.00 l
-2016/07/22 tiovit jet -36.00 kg
+2016/07/22 tiovit jet -36.00 kg  #Dosaggio di Zolfo aumentato per forte pressione della malattia
 2016/07/22 foliane 80 wg -8.00 kg
 2016/07/22 folpec 50 sc -5.00 l
 2016/07/22 king 360 hp -20.00 l
-2016/07/29 king 360 hp -20.00 l
+2016/07/29 king 360 hp -20.00 l  #Dosaggio di Zolfo aumentato per forte pressione della malattia
 2016/07/29 tiovit jet -36.00 kg
-2016/08/06 tiovit jet -37.00 kg
+2016/08/06 tiovit jet -37.00 kg  #Dosaggio di Zolfo aumentato per forte pressione della malattia
 2016/08/06 cyprus 25 df -20.00 kg
-2016/08/13 tiogold disperss -37.00 kg
+2016/08/13 tiogold disperss -37.00 kg  #Dosaggio di Zolfo aumentato per forte pressione della malattia
 2016/08/13 king 360 hp -20.00 l
 2016/08/13 teldor plus -1.00 l
-2016/08/20 tiogold disperss -37.00 kg
+2016/08/20 tiogold disperss -37.00 kg  #Dosaggio di Zolfo aumentato per forte pressione della malattia
 2016/08/20 king 360 hp -20.00 l
 2016/08/26 cyprus 25 df -20.00 kg <-prosecco
 2016/08/26 tiogold disperss -26.00 kg <-prosecco

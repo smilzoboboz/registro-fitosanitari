@@ -11,7 +11,7 @@ from tools import readDate, unitConversion, ProductException, color, query_yes_n
 
 data = {}
 trattamento = {}
-lineaRegistro = re.compile('([0-9/]*) (.*) (-*[^a-zA-Z]+)[ ]*([mMkK]*[lLgG])[ ]*[-<]*([^# ]*)[ ]*[#]*[ ]*(.*)')
+lineaRegistro = re.compile('([0-9/]*) (.*) (-*[^a-zA-Z#]+)[ ]*([mMkK]*[lLgG])[ ]*[-<]*([^# ]*)[ ]*[#]*[ ]*(.*)')
 
 def add (line, metodo='add', quiet=False, preview=True):
     """ Add entries to the registry
@@ -157,7 +157,7 @@ def show (pline, mode='full', showDate=True, tnum=0, mask=[], tleft=0, report=Fa
             # Minimum/maximum usage per /ha
             pqmax = pqty/products.areas[area]
             minmax = productData['minmax']
-            if (pqmax > minmax[1]*1.05 or pqmax < minmax[0]*0.95):
+            if pqmax > minmax[1]*1.05:
                 pqmaxColor = color.RED
             elif (pqmax > minmax[1] or pqmax < minmax[0]):
                 pqmaxColor = color.YELLOW
@@ -187,7 +187,7 @@ def show (pline, mode='full', showDate=True, tnum=0, mask=[], tleft=0, report=Fa
                 trattamento[area][-1]['date'] = pline['date']
                 trattamento[area][-1]['names'].append(pline['name'].upper())
                 trattamento[area][-1]['qtys'].append(pqty)
-                trattamento[area][-1]['unit'] = append(pline['unit'])
+                trattamento[area][-1]['unit'].append(pline['unit'])
                 trattamento[area][-1]['area'] = products.areas[area]
                 for entry in productData['obiettivo']:
                     trattamento[area][-1]['target'].append(entry)
@@ -357,6 +357,7 @@ def read (mode='reg', search="", file='registro.txt', report=False):
             printReport(trattamento[area], offset=counter, area=area)
             counter += 1
             print("\n\n\n\n\n")
+        
 
 
 def printReport (tList, ty=360, offset=1, area=""):
@@ -364,9 +365,10 @@ def printReport (tList, ty=360, offset=1, area=""):
         intro = fp.read().splitlines()
     pageCount = 1
     currentDocument = []
+    isLastOne = False
     for lineDict in tList[1:]:
         # calcola altezze prima di stampare (margine basso pagina)
-        if ty + 18 * len(lineDict['names']) + 12 > 700 or lineDict == tList[-1]:
+        if ty + 18 * len(lineDict['names']) + 12 > 700:
             with open('scheda_B(%d).svg' % (pageCount + offset*10), 'w', encoding='utf-8') as fp:
                 for line in intro:
                     fp.write("%s\n" % line)
@@ -382,6 +384,8 @@ def printReport (tList, ty=360, offset=1, area=""):
             ty = 360
             pageCount += 1
             currentDocument = []
+        elif lineDict == tList[-1]:
+            isLastOne = True
         tx = [114, 350, 393, 470, 591, 762, 857]  # text alignment 'x' values
         lx = [71, 157, 356, 429, 510, 671, 851, 1011]
         ry = 18  # text lines spacing
@@ -421,12 +425,48 @@ def printReport (tList, ty=360, offset=1, area=""):
         currentDocument.append("<text x=\"%d\" y=\"%d\" %s>%s</text>" % (
             tx[5], ty + 18 * (counter + 1), tdef, "Arcade 13/06/1960"))
         #TODO: Note
+        counter = 1
+        allnotes = groupStrings(lineDict['notes'])
+        for allnote in allnotes:
+            wordcount = 0
+            wordidxbase = 0
+            for wordidx in range(len(allnote.split())):
+                wordcount += len(allnote.split()[wordidx]) + 1
+                if wordcount > 25:
+                    print(allnote.split()[wordidx])
+                    currentDocument.append("<text x=\"%d\" y=\"%d\" class=\"scheda\" text-anchor=\"start\">%s</text>" % (
+                        tx[6], ty + 18 * counter, ' '.join(allnote.split()[wordidxbase:wordidx])))
+                    counter += 1
+                    wordcount = len(allnote.split()[wordidx]) + 1
+                    wordidxbase = wordidx
+            currentDocument.append("<text x=\"%d\" y=\"%d\" class=\"scheda\" text-anchor=\"start\">%s</text>" % (
+                tx[6], ty + 18 * counter, ' '.join(allnote.split()[wordidxbase:])))
+            counter += 1
+        if counter - 1 > maxCounter:
+            maxCounter = counter - 1
         # > line end <
         tm = ty + maxCounter * 18 + 12
         for value in lx:
             currentDocument.append("<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" stroke=\"black\" stroke-width=\"0.70\" />" % (value, ty, value, tm))
         ty = tm
         currentDocument.append("<line x1=\"71\" y1=\"%d\" x2=\"1011\" y2=\"%d\" stroke=\"black\" stroke-width=\"0.70\" />" % (ty, ty))
+        if isLastOne:
+            with open('scheda_B(%d).svg' % (pageCount + offset*10), 'w', encoding='utf-8') as fp:
+                for line in intro:
+                    fp.write("%s\n" % line)
+                traduzione = {
+                    'pinot': 'Pinot Grigio',
+                    'prosecco': 'Glera',}
+                fp.write("<text x=\"274\" y=\"233\" class=\"scheda\" text-anchor=\"end\">%s</text>\n" % ("%.4f" % products.areas[area]).replace('.', ','))
+                fp.write("<text x=\"736\" y=\"213.5\" class=\"titoli\" text-anchor=\"end\">%s</text>\n" % traduzione[area])
+                fp.write("<text x=\"736\" y=\"233\" class=\"scheda\" text-anchor=\"end\">%s</text>\n" % "N/D")
+                for line in currentDocument:
+                    fp.write("%s\n" % line)
+                fp.write("</svg>")
+            ty = 360
+            pageCount += 1
+            currentDocument = []
+            isLastOne = False
 
 
 def groupStrings (lala):
