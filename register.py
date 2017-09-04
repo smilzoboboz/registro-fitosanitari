@@ -187,7 +187,7 @@ def show (pline, mode='full', showDate=True, tnum=0, mask=[], tleft=0, report=Fa
                 trattamento[area][-1]['date'] = pline['date']
                 trattamento[area][-1]['names'].append(pline['name'].upper())
                 trattamento[area][-1]['qtys'].append(pqty)
-                trattamento[area][-1]['unit'] = pline['unit']
+                trattamento[area][-1]['unit'] = append(pline['unit'])
                 trattamento[area][-1]['area'] = products.areas[area]
                 for entry in productData['obiettivo']:
                     trattamento[area][-1]['target'].append(entry)
@@ -230,7 +230,7 @@ def buildTrattamento (item):
         'date': datetime.datetime.today(),
         'names': [],
         'qtys': [],
-        'unit': "",
+        'unit': [],
         'area':  0,
         'target': [],
         'titolare': "",
@@ -398,9 +398,10 @@ def printReport (tList, ty=360, offset=1, area=""):
         if counter - 1 > maxCounter:
             maxCounter = counter - 1
         counter = 1
-        for qty in lineDict['qtys']:
+        for index in range(len(lineDict['qtys'])):
+            qty = lineDict['qtys'][index]
             currentDocument.append("<text x=\"%d\" y=\"%d\" %s>%s %s</text>" % (
-            tx[2], ty + 18 * counter, tdef, ("%.2f" % qty).replace('.', ','), lineDict['unit']))
+            tx[2], ty + 18 * counter, tdef, ("%.2f" % qty).replace('.', ','), lineDict['unit'][index]))
             counter += 1
         if counter - 1 > maxCounter:
             maxCounter = counter - 1
