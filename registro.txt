@@ -3,15 +3,16 @@
 2017/01/01 vector 2.00 l
 2017/01/01 fungiman combi 7.00 kg
 2017/01/01 intrepid 0.60 l
+2017/01/01 flare gold combi pepite 2.00 kg
 2017/07/12 grifon più wg 20.00 kg
 2017/07/12 soleil 50 wg 4.00 kg
 2017/07/12 tiolene 20.00 l
 2017/07/12 basta 200 5.00 l
-2017/07/17 grifon più wg -2.50 kg <-pinot
-2017/07/17 grifon più wg -4.16 kg <-prosecco
+2017/07/17 grifon più wg -2.98 kg <-pinot
+2017/07/17 grifon più wg -3.68 kg <-prosecco
 2017/07/17 tiolene -12.00 l
 2017/07/17 soleil 50 wg -4.00 kg
-2017/07/17 foliane 80 wg -8.00 kg <-prosecco
+2017/07/17 foliane 80 wg -8.60 kg <-prosecco
 2017/06/08 foliane 80 wg 20.00 kg
 2017/06/08 prevint top 20.00 kg
 2017/06/08 zoxium 240 sc 6.00 l
@@ -42,7 +43,7 @@
 2017/06/23 crittovit wg -20.00 kg
 2017/06/23 vivando -2.00 l
 2017/06/16 prevint top -20.00 kg
-2017/06/16 foliane 80 wg -16.00 kg
+2017/06/16 foliane 80 wg -12.00 kg
 2017/06/16 tiogold disperss -24.00 kg
 2017/06/16 applaud plus -11.00 kg
 2017/06/09 zoxium 240 sc -6.00 l
@@ -69,15 +70,15 @@
 2017/05/11 thiocur forte 10.00 l
 2017/05/11 coragen 0.30 l
 2017/03/17 patriot dry -8.00 kg
-2017/03/18 goal 480 sc -4.00 l
+2017/03/18 goal 480 sc -2.40 l
 2017/04/07 penncozeb dg -10.00 kg
 2017/04/07 tiogold disperss -12.50 kg
 2017/04/14 penncozeb dg -10.00 kg
 2017/04/14 tiogold disperss -12.50 kg
 2017/04/21 kumulus tecno -18.00 kg
-2017/04/21 vondozeb dg -15.00 kg
+2017/04/21 vondozeb dg -13.50 kg
 2017/04/29 kumulus tecno -18.00 kg
-2017/04/29 vondozeb dg -15.00 kg
+2017/04/29 vondozeb dg -13.50 kg
 2017/04/29 sphinx sc -3.00 l
 2017/04/29 vector -3.00 l
 2017/05/04 kumulus tecno -18.00 kg
@@ -94,7 +95,6 @@
 2017/05/25 vector -3.00 l
 2017/05/25 ridomil gold combi pepite -16.00 kg
 2017/05/25 thiocur forte -10.00 l
-2017/06/01 vector -3.00 l
 2017/06/01 ridomil gold combi pepite -16.00 kg
 2017/06/01 thiocur forte -10.00 l
 2017/06/09 kumulus tecno -21.00 kg
@@ -104,13 +104,14 @@
 2017/07/20 heliocuivre s 10.00 l
 2017/07/20 shelter 4.00 kg
 2017/07/25 grifon più wg -13.34 kg <-prosecco
+2017/07/25 foliane 80 wg -1.95 kg <-prosecco
 2017/07/25 tiolene -8.00 l <-prosecco
 2017/07/25 shelter -4.00 kg
 2017/07/25 thiocur forte -1.25 l <-pinot
 2017/07/25 thiocur forte -2.09 l <-prosecco
-2017/07/25 heliocuivre s -2.49 l <-pinot
-2017/07/25 heliocuivre s -4.13 l <-prosecco
-2017/07/26 heliocuivre s -3.38 l <-prosecco # ripetizione trattamento causa dilavamento
+2017/07/25 heliocuivre s -2.99 l <-pinot
+2017/07/25 heliocuivre s -3.63 l <-prosecco
+2017/07/26 heliocuivre s -3.38 l <-prosecco  #Ripetizione parziale del trattamento precedente causa dilavamento
 2017/07/26 thiocur forte -1.66 l <-prosecco
 2017/08/01 poltiglia disperss 90.00 kg
 2017/08/01 kumulus tecno 50.00 kg
